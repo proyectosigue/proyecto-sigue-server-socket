@@ -1,7 +1,213 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7ceae84e-019e-4e2c-bbc4-322e92989d1e" name="Default" comment="" />
+    <list default="true" id="7ceae84e-019e-4e2c-bbc4-322e92989d1e" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Cliente/resources/android/icon/drawable-hdpi-icon.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Cliente/resources/android/icon/drawable-ldpi-icon.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Cliente/resources/android/icon/drawable-mdpi-icon.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Cliente/resources/android/icon/drawable-xhdpi-icon.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Cliente/resources/android/icon/drawable-xxhdpi-icon.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Cliente/resources/android/icon/drawable-xxxhdpi-icon.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Cliente/resources/android/splash/drawable-land-hdpi-screen.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Cliente/resources/android/splash/drawable-land-ldpi-screen.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Cliente/resources/android/splash/drawable-land-mdpi-screen.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Cliente/resources/android/splash/drawable-land-xhdpi-screen.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Cliente/resources/android/splash/drawable-land-xxhdpi-screen.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Cliente/resources/android/splash/drawable-land-xxxhdpi-screen.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Cliente/resources/android/splash/drawable-port-hdpi-screen.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Cliente/resources/android/splash/drawable-port-ldpi-screen.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Cliente/resources/android/splash/drawable-port-mdpi-screen.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Cliente/resources/android/splash/drawable-port-xhdpi-screen.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Cliente/resources/android/splash/drawable-port-xxhdpi-screen.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Cliente/resources/android/splash/drawable-port-xxxhdpi-screen.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Cliente/resources/icon.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Cliente/resources/ios/icon/icon-1024.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Cliente/resources/ios/icon/icon-40.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Cliente/resources/ios/icon/icon-40@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Cliente/resources/ios/icon/icon-40@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Cliente/resources/ios/icon/icon-50.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Cliente/resources/ios/icon/icon-50@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Cliente/resources/ios/icon/icon-60.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Cliente/resources/ios/icon/icon-60@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Cliente/resources/ios/icon/icon-60@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Cliente/resources/ios/icon/icon-72.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Cliente/resources/ios/icon/icon-72@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Cliente/resources/ios/icon/icon-76.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Cliente/resources/ios/icon/icon-76@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Cliente/resources/ios/icon/icon-83.5@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Cliente/resources/ios/icon/icon-small.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Cliente/resources/ios/icon/icon-small@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Cliente/resources/ios/icon/icon-small@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Cliente/resources/ios/icon/icon.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Cliente/resources/ios/icon/icon@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Cliente/resources/ios/splash/Default-568h@2x~iphone.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Cliente/resources/ios/splash/Default-667h.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Cliente/resources/ios/splash/Default-736h.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Cliente/resources/ios/splash/Default-Landscape-736h.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Cliente/resources/ios/splash/Default-Landscape@2x~ipad.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Cliente/resources/ios/splash/Default-Landscape@~ipadpro.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Cliente/resources/ios/splash/Default-Landscape~ipad.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Cliente/resources/ios/splash/Default-Portrait@2x~ipad.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Cliente/resources/ios/splash/Default-Portrait@~ipadpro.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Cliente/resources/ios/splash/Default-Portrait~ipad.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Cliente/resources/ios/splash/Default@2x~iphone.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Cliente/resources/ios/splash/Default@2x~universal~anyany.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Cliente/resources/ios/splash/Default~iphone.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Cliente/resources/splash.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Cliente/src/assets/icon/favicon.ico" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Cliente/src/assets/imgs/logo.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Cliente/src/assets/imgs/logoproyecto.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/public/favicon.ico" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Cliente/.editorconfig" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Cliente/.gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Cliente/config.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Cliente/ionic.config.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Cliente/ionic.starter.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Cliente/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Cliente/resources/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Cliente/src/app/app.component.ts" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Cliente/src/app/app.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Cliente/src/app/app.module.ts" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Cliente/src/app/app.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Cliente/src/app/main.ts" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Cliente/src/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Cliente/src/manifest.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Cliente/src/pages/about/about.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Cliente/src/pages/about/about.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Cliente/src/pages/about/about.ts" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Cliente/src/pages/contact/contact.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Cliente/src/pages/contact/contact.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Cliente/src/pages/contact/contact.ts" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Cliente/src/pages/home/home.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Cliente/src/pages/home/home.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Cliente/src/pages/home/home.ts" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Cliente/src/pages/login/login.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Cliente/src/pages/login/login.module.ts" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Cliente/src/pages/login/login.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Cliente/src/pages/login/login.ts" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Cliente/src/pages/register/register.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Cliente/src/pages/register/register.module.ts" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Cliente/src/pages/register/register.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Cliente/src/pages/register/register.ts" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Cliente/src/pages/tabs/tabs.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Cliente/src/pages/tabs/tabs.ts" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Cliente/src/service-worker.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Cliente/src/theme/variables.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Cliente/tsconfig.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Cliente/tslint.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/.env.example" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/.gitattributes" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/.gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/app/Console/Kernel.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/app/Exceptions/Handler.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/app/Http/Controllers/Auth/ForgotPasswordController.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/app/Http/Controllers/Auth/LoginController.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/app/Http/Controllers/Auth/RegisterController.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/app/Http/Controllers/Auth/ResetPasswordController.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/app/Http/Controllers/AuthenticateController.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/app/Http/Controllers/Controller.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/app/Http/Controllers/UserController.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/app/Http/Kernel.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/app/Http/Middleware/Cors.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/app/Http/Middleware/EncryptCookies.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/app/Http/Middleware/RedirectIfAuthenticated.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/app/Http/Middleware/TrimStrings.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/app/Http/Middleware/VerifyCsrfToken.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/app/Providers/AppServiceProvider.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/app/Providers/AuthServiceProvider.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/app/Providers/BroadcastServiceProvider.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/app/Providers/EventServiceProvider.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/app/Providers/RouteServiceProvider.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/app/User.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/artisan" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/bootstrap/app.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/bootstrap/autoload.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/bootstrap/cache/.gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/composer.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/composer.lock" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/config/app.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/config/auth.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/config/broadcasting.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/config/cache.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/config/database.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/config/filesystems.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/config/jwt.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/config/mail.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/config/queue.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/config/services.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/config/session.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/config/view.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/database/.gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/database/factories/ModelFactory.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/database/migrations/2014_10_12_000000_create_users_table.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/database/migrations/2014_10_12_100000_create_password_resets_table.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/database/seeds/DatabaseSeeder.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/database/seeds/UsersTableSeeder.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/phpunit.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/public/.htaccess" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/public/css/app.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/public/index.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/public/js/app.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/public/robots.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/public/web.config" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/readme.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/resources/assets/js/app.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/resources/assets/js/bootstrap.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/resources/assets/js/components/Example.vue" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/resources/assets/sass/_variables.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/resources/assets/sass/app.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/resources/lang/en/auth.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/resources/lang/en/pagination.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/resources/lang/en/passwords.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/resources/lang/en/validation.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/resources/views/vendor/mail/html/button.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/resources/views/vendor/mail/html/footer.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/resources/views/vendor/mail/html/header.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/resources/views/vendor/mail/html/layout.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/resources/views/vendor/mail/html/message.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/resources/views/vendor/mail/html/panel.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/resources/views/vendor/mail/html/promotion.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/resources/views/vendor/mail/html/promotion/button.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/resources/views/vendor/mail/html/subcopy.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/resources/views/vendor/mail/html/table.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/resources/views/vendor/mail/html/themes/default.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/resources/views/vendor/mail/markdown/button.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/resources/views/vendor/mail/markdown/footer.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/resources/views/vendor/mail/markdown/header.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/resources/views/vendor/mail/markdown/layout.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/resources/views/vendor/mail/markdown/message.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/resources/views/vendor/mail/markdown/panel.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/resources/views/vendor/mail/markdown/promotion.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/resources/views/vendor/mail/markdown/promotion/button.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/resources/views/vendor/mail/markdown/subcopy.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/resources/views/vendor/mail/markdown/table.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/resources/views/vendor/notifications/email.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/resources/views/vendor/pagination/bootstrap-4.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/resources/views/vendor/pagination/default.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/resources/views/vendor/pagination/simple-bootstrap-4.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/resources/views/vendor/pagination/simple-default.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/resources/views/welcome.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/routes/api.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/routes/channels.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/routes/console.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/routes/web.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/server.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/storage/app/.gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/storage/app/public/.gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/storage/framework/.gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/storage/framework/cache/.gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/storage/framework/sessions/.gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/storage/framework/testing/.gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/storage/framework/views/.gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/storage/logs/.gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/tests/CreatesApplication.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/tests/Feature/ExampleTest.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/tests/TestCase.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/tests/Unit/ExampleTest.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/webpack.mix.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -54,10 +260,6 @@
               <option name="myItemId" value="ProyectoSigue" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Server" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
@@ -88,24 +290,24 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1518067834950</updated>
-      <workItem from="1518067836060" duration="41000" />
+      <workItem from="1518067836060" duration="340000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="41000" />
+    <option name="totallyTimeSpent" value="340000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24963397" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24963397" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4873817" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
