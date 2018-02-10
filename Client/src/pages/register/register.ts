@@ -1,5 +1,5 @@
 import {Component, ViewChild} from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {AlertController, IonicPage, NavController, NavParams} from 'ionic-angular';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 
 /**
@@ -23,7 +23,8 @@ export class RegisterPage {
   password: string = "";
   email: string = "";
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private httpClient: HttpClient) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private httpClient: HttpClient,
+              public alertCtrl: AlertController) {
 
   }
 
@@ -32,17 +33,28 @@ export class RegisterPage {
   }
 
   signUp(){
-    /*let headers = new HttpHeaders();
-    headers.append("Access-Control-Allow-Methods",  "*");*/
-
+    let self = this;
     let _options = { headers: new HttpHeaders() };
 
     let userData = {"username": this.username, "password": this.password, "email": this.email};
     this.httpClient.post(this.apiURL + this.signUPUrl, userData, _options)
       .subscribe( (data: any) => {
-        console.log(data)
+        self.presentResponse(data);
       });
-    console.log("username:" + this.username + " password: " + this.password);
+  }
+
+  presentResponse(response){
+    let messages = "";
+    for(let i = 0; i < response["messages"].length; i++){
+      messages += response["messages"][i];
+      if(response["status"] == "Error") messages += "<br>";
+    }
+    let alert = this.alertCtrl.create({
+      title: response["status"],
+      subTitle: messages,
+      buttons: ['OK']
+    });
+    alert.present();
   }
 
 }
