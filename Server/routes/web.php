@@ -14,11 +14,12 @@ use App\Http\Requests;
 */
 
 Route::post("login", "AuthenticateController@authenticate")->name("login");
+Route::get("/", function(){
+    return view("welcome");
+});
+Route::post("users", "UserController@store");
 Route::middleware(["jwt.auth"])->group(function(){
-    Route::get("/", function(){
-        return view("welcome");
-    });
     Route::resource('users', 'UserController', [
-        'only' => [ 'index', 'store', 'show', 'update', 'destroy' ],
+        'only' => [ 'index', 'show', 'update', 'destroy' ],
     ]);
 });
