@@ -1,6 +1,7 @@
 import {Component, ViewChild} from '@angular/core';
 import {AlertController, IonicPage, NavController, NavParams} from 'ionic-angular';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {LoginPage} from "../login/login";
 
 /**
  * Generated class for the RegisterPage page.
@@ -17,7 +18,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 export class RegisterPage {
 
   apiURL = "http://localhost:8000";
-  signUPUrl = "/users";
+  signUpUrl = "/users";
 
   username: string = "";
   password: string = "";
@@ -35,25 +36,31 @@ export class RegisterPage {
   signUp(){
     let self = this;
     let _options = { headers: new HttpHeaders() };
-
     let userData = {"username": this.username, "password": this.password, "email": this.email};
-    this.httpClient.post(this.apiURL + this.signUPUrl, userData, _options)
+    this.httpClient.post(this.apiURL + this.signUpUrl, userData, _options)
       .subscribe( (data: any) => {
         self.presentResponse(data);
       });
   }
 
   presentResponse(response){
+    let self = this;
     let messages = "";
     for(let i = 0; i < response["messages"].length; i++){
       messages += response["messages"][i];
-      if(response["status"] == "Error") messages += "<br>";
+      if(response["messages"].length > 1 && response["status"] == "Error") messages += "<br>";
     }
     let alert = this.alertCtrl.create({
       title: response["status"],
       subTitle: messages,
-      buttons: ['OK']
-    });
+      buttons: [
+        {
+        text: 'OK',
+          handler: () => {
+            if(response["status"] == "Éxito") self.navCtrl.push(LoginPage);
+          }
+      }
+    ]});
     alert.present();
   }
 
