@@ -1,5 +1,5 @@
 import {Component, ViewChild} from '@angular/core';
-import {AlertController, IonicPage, NavController, NavParams} from 'ionic-angular';
+import {AlertController, IonicPage, NavController, NavParams, NavOptions} from 'ionic-angular';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {LoginPage} from "../login/login";
 
@@ -57,7 +57,7 @@ export class RegisterPage {
         {
         text: 'OK',
           handler: () => {
-            if(response["status"] == "Éxito") self.navCtrl.push(LoginPage);
+            if(response["status"] == "Éxito") self.navCtrl.popToRoot();
           }
       }
     ]});

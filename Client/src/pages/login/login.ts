@@ -2,6 +2,9 @@ import { Component, ViewChild } from '@angular/core';
 import {IonicPage, NavController, NavParams, AlertController, Alert} from 'ionic-angular';
 import { RegisterPage } from "../register/register";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {TabsPage} from "../tabs/tabs";
+import {UserProvider} from "../../providers/user/user";
+import { NativeStorage } from '@ionic-native/native-storage';
 
 /**
  * Generated class for the LoginPage page.
@@ -24,7 +27,7 @@ export class LoginPage {
   email: string = "";
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController,
-              private httpClient: HttpClient) {
+              private httpClient: HttpClient, private userProvider: UserProvider, private nativeStorage: NativeStorage) {
   }
 
   ionViewDidLoad() {
@@ -33,15 +36,13 @@ export class LoginPage {
 
   signIn(){
     let self = this;
-    let _options = { headers: new HttpHeaders() };
-    let userData = {"email": this.email, "password": this.password };
-    this.httpClient.post(this.apiURL + this.signInURL, userData, _options)
-      .subscribe( (data: any) => {
+    this.userProvider.validateUser(this.email, this.password).subscribe( (data: any) => {
         if(data["status"] == "Error") {
           self.presentResponse(data);
         }
         else {
-          console.log(data);
+          self.nativeStorage.setItem("session", data["data"]);
+          self.navCtrl.setRoot(TabsPage, data);
         }
       });
   }
