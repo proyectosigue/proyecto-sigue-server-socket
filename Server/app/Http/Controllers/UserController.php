@@ -8,6 +8,8 @@ use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Facades\Validator;
+
+use Hash;
 use Exception;
 
 use App\Http\Middleware\Cors;
@@ -35,27 +37,29 @@ class UserController extends Controller
             "email.email" => "El email debe ser válido"
         ]);
 
-        foreach( $validator->errors()->toArray() as $error){
-            $errors[] = $error;
-        }
-
         if($validator->fails()){
-            return response()->json(["status" => "Error", "messages" => $errors]);
+            return response()->json(["status" => "Error",
+                "messages" => $this->formattedValidatorErrorsArray($validator)]);
         }
 
         try {
             $user = new User([
                 'name' => $request->input("username"),
-                'password' => $request->input("password"),
+                'password' => Hash::make($request->input("password")),
                 'email' => $request->input("email")
             ]);
             $user->save();
-            return response()->json(['status' => "Éxito",
-                "messages" => "El usuario fue añadido correctamente"]);
+            return response()->json(['status' => "Éxito", "messages" => ["Te has registrado"]]);
         } catch (Exception $e) {
-            return response()->json(['status' => "Éxito",
-                "messages" => "Ocurrio un error al añadir el usuario"]);
+            return response()->json(['status' => "Error", "messages" => ["Ocurrió un error en el registro"]]);
         }
+    }
+
+    private function formattedValidatorErrorsArray($validator){
+        foreach( $validator->errors()->toArray() as $error){
+            $errors[] = $error;
+        }
+        return $errors;
     }
 
 }
