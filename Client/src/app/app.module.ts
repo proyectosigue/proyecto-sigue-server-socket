@@ -7,7 +7,6 @@ import { FormsModule } from '@angular/forms';
 import { NativeStorage } from '@ionic-native/native-storage';
 
 import { AboutPage } from '../pages/about/about';
-import { ContactPage } from '../pages/contact/contact';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { LoginPage } from "../pages/login/login";
@@ -15,6 +14,9 @@ import { RegisterPage } from "../pages/register/register";
 import { HomeAdminPage } from '../pages/home-admin/home-admin'
 import { HomeUserPage } from '../pages/home-user/home-user'
 import { TabsPage } from '../pages/tabs/tabs';
+import { GodfathersPage} from "../pages/godfathers/godfathers";
+import { GodsonsPage } from "../pages/godsons/godsons";
+import { GodfathersPopoverPage } from "../pages/godfathers-popover/godfathers-popover";
 import { UserProvider } from '../providers/user/user';
 
 
@@ -22,12 +24,14 @@ import { UserProvider } from '../providers/user/user';
   declarations: [
     MyApp,
     AboutPage,
-    ContactPage,
     TabsPage,
     LoginPage,
     RegisterPage,
     HomeAdminPage,
-    HomeUserPage
+    HomeUserPage,
+    GodfathersPage,
+    GodfathersPopoverPage,
+    GodsonsPage
   ],
   imports: [
     BrowserModule,
@@ -39,12 +43,14 @@ import { UserProvider } from '../providers/user/user';
   entryComponents: [
     MyApp,
     AboutPage,
-    ContactPage,
     TabsPage,
     LoginPage,
     RegisterPage,
     HomeAdminPage,
     HomeUserPage,
+    GodfathersPage,
+    GodfathersPopoverPage,
+    GodsonsPage
   ],
   providers: [
     StatusBar,

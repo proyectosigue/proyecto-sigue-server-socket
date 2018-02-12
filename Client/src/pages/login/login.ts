@@ -41,7 +41,7 @@ export class LoginPage {
           self.presentResponse(data);
         }
         else {
-          self.nativeStorage.setItem("session", data["data"]);
+          self.nativeStorage.setItem("session", data);
           self.navCtrl.setRoot(TabsPage, data);
         }
       });
@@ -60,8 +60,9 @@ export class LoginPage {
     alert.present();
   }
 
-  pushSignUp(){
+  pushSignUp() {
     this.navCtrl.push(RegisterPage);
   }
+
 
 }

@@ -1,7 +1,6 @@
 import {Component, ViewChild} from '@angular/core';
 import {AlertController, IonicPage, NavController, NavParams, NavOptions} from 'ionic-angular';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {LoginPage} from "../login/login";
 
 /**
  * Generated class for the RegisterPage page.
@@ -57,7 +56,7 @@ export class RegisterPage {
         {
         text: 'OK',
           handler: () => {
-            if(response["status"] == "Éxito") self.navCtrl.popToRoot();
+            if(response["status"] == "Éxito") self.navCtrl.pop();
           }
       }
     ]});

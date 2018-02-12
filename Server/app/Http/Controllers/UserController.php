@@ -62,4 +62,9 @@ class UserController extends Controller
         return $errors;
     }
 
+    public function getGodfathers(Request $request){
+        $users = User::all()->toArray();
+        return response()->json(['status' => "Éxito", "messages" => ["padrinos"], "data" => $users]);
+    }
+
 }

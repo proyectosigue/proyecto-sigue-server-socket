@@ -1,19 +1,15 @@
 import { Component } from '@angular/core';
 import { AboutPage } from '../about/about';
-import { ContactPage } from '../contact/contact';
-import { NavParams } from 'ionic-angular';
-import { NativeStorage } from '@ionic-native/native-storage';
+import { GodfathersPage } from '../godfathers/godfathers';
+import { GodsonsPage } from '../godsons/godsons';
 
 @Component({
   templateUrl: 'tabs.html'
 })
 export class TabsPage {
   tab1Root = AboutPage;
-  tab2Root = AboutPage;
-  tab3Root = ContactPage;
+  tab2Root = GodfathersPage;
+  tab3Root = GodsonsPage;
 
-  constructor(public navParams: NavParams, public nativeStorage: NativeStorage) {
-    console.log(navParams);
-    console.log(this.nativeStorage.getItem("session"));
-  }
+  constructor() {}
 }
