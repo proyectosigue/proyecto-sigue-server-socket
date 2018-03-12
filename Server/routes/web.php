@@ -13,14 +13,15 @@ use App\Http\Requests;
 |
 */
 
-Route::get("/", function(){
+Route::get("/", function () {
     return view("welcome");
 });
+
 Route::post("login", "AuthenticateController@authenticate")->name("login");
-Route::post("users", "UserController@store");
-//Route::middleware(["jwt.auth"])->group(function(){
-    Route::post("users/godfathers", "UserController@getGodfathers");
-    Route::resource('users', 'UserController', [
-        'only' => [ 'index', 'show', 'update', 'destroy'],
-    ]);
-//});
+Route::post("users/godfathers/sign-up", "UserController@store");
+Route::middleware(["jwt.auth"])->group(function () {
+    Route::group(['prefix' => 'users'], function () {
+        Route::get("godfathers", "UserController@getGodfathers");
+    });
+    Route::resource('users', 'UserController');
+});
