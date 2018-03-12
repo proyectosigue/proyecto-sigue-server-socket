@@ -18,7 +18,7 @@ header('Vary: Origin');
 if (PHP_SAPI != 'cli') {
     header('Access-Control-Allow-Methods : POST, GET, OPTIONS, PUT, DELETE, HEAD');
     header('Allow: POST, GET, OPTIONS, PUT, DELETE, HEAD');
-    header('Access-Control-Allow-Headers : X-Requested-With, Content-Type');
+    header('Access-Control-Allow-Headers : X-Requested-With, Content-Type, Authorization');
 }
 
 $app = new Illuminate\Foundation\Application(
