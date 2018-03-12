@@ -16,12 +16,15 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 })
 export class RegisterPage {
 
-  apiURL = "http://localhost:8000";
-  signUpUrl = "/users";
+  apiURL = "http://localhost:8010";
+  signUpUrl = "/users/godfathers/sign-up";
 
-  username: string = "";
+  first_name: string = "";
+  last_name: string = "";
+  interests: string = "";
   password: string = "";
   email: string = "";
+  profile_image: string = "TEMPORAL";
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private httpClient: HttpClient,
               public alertCtrl: AlertController) {
@@ -34,8 +37,15 @@ export class RegisterPage {
 
   signUp(){
     let self = this;
-    let _options = { headers: new HttpHeaders() };
-    let userData = {"username": this.username, "password": this.password, "email": this.email};
+
+    let headers = new HttpHeaders();
+    headers = headers.append('Content-Type','application/json');
+    headers = headers.append('Accept','application/json');
+    let _options = { headers: headers };
+
+    let userData = {"first_name": this.first_name, "password": this.password, "email": this.email,
+    "last_name": this.last_name, "interests": this.interests, "profile_image": this.profile_image};
+
     this.httpClient.post(this.apiURL + this.signUpUrl, userData, _options)
       .subscribe( (data: any) => {
         self.presentResponse(data);

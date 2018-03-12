@@ -26,7 +26,6 @@ export class GodfathersPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad GodfathersPage');
     this.userProvider.getGodfathers().then((res: any) => {
-      console.log("padrinos:");
       res.subscribe( (data:any ) => {
         console.log(data);
       });

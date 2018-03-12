@@ -21,18 +21,28 @@
     </ion-item>
 
     <ion-item>
-      <ion-label floating>Usuario</ion-label>
-      <ion-input type="text" [(ngModel)]="username"></ion-input>
+      <ion-label floating>Nombre/s</ion-label>
+      <ion-input type="text" name="first_name" [(ngModel)]="first_name"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Apellidos</ion-label>
+      <ion-input type="text" name="last_name" [(ngModel)]="last_name"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label floating>Correo</ion-label>
-      <ion-input type="email" [(ngModel)]="email"></ion-input>
+      <ion-input type="email" name="email" [(ngModel)]="email"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Intereses</ion-label>
+      <ion-input type="text" name="interests" [(ngModel)]="interests"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label floating>Contraseña</ion-label>
-      <ion-input type="password" [(ngModel)]="password"></ion-input>
+      <ion-input type="password" name="password" [(ngModel)]="password"></ion-input>
     </ion-item>
 
   </ion-list>

@@ -17,13 +17,17 @@ export class UserProvider {
   getGodfathersURL;
 
   constructor(public http: HttpClient, private nativeStorage: NativeStorage) {
-    this.apiURL = "http://localhost:8000";
+    this.apiURL = "http://localhost:8010";
     this.signInURL = "/login";
     this.getGodfathersURL = "/users/godfathers";
   }
 
   validateUser(email, password){
-    let _options = { headers: new HttpHeaders() };
+    let headers = new HttpHeaders();
+    headers = headers.append('Content-Type','application/json');
+    headers = headers.append('Accept','application/json');
+    let _options = { headers: headers };
+
     let userData = {"email": email, "password": password };
     return this.http.post(this.apiURL + this.signInURL, userData, _options);
   }
@@ -31,9 +35,14 @@ export class UserProvider {
   getGodfathers(){
     return new Promise((resolve) => {
       this.nativeStorage.getItem("session").then(res => {
-        let body = { "email": res["email"],"password": res["password"] };
-        let _options = {headers: new HttpHeaders()};
-        resolve(this.http.post(this.apiURL + this.getGodfathersURL, body, _options));
+
+        let headers = new HttpHeaders();
+        headers = headers.append('Content-Type','application/json');
+        headers = headers.append('Accept','application/json');
+        headers = headers.append('Authorization', 'Bearer ' + res.token);
+        let _options = { headers: headers };
+
+        resolve(this.http.get(this.apiURL + this.getGodfathersURL, _options));
       });
     });
   }
