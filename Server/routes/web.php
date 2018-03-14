@@ -18,10 +18,7 @@ Route::get("/", function () {
 });
 
 Route::post("login", "AuthenticateController@authenticate")->name("login");
-Route::post("users/godfathers/sign-up", "UserController@store");
+Route::post("godfathers/sign-up", "GodfatherController@store");
 Route::middleware(["jwt.auth"])->group(function () {
-    Route::group(['prefix' => 'users'], function () {
-        Route::get("godfathers", "UserController@getGodfathers");
-    });
-    Route::resource('users', 'UserController');
+    Route::resource('godfathers', 'GodfatherController');
 });
