@@ -19,7 +19,7 @@ export class UserProvider {
   constructor(public http: HttpClient, private nativeStorage: NativeStorage) {
     this.apiURL = "http://localhost:8010";
     this.signInURL = "/login";
-    this.getGodfathersURL = "/users/godfathers";
+    this.getGodfathersURL = "/godfathers";
   }
 
   validateUser(email, password){

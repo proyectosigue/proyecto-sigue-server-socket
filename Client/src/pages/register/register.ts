@@ -17,14 +17,14 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 export class RegisterPage {
 
   apiURL = "http://localhost:8010";
-  signUpUrl = "/users/godfathers/sign-up";
+  signUpUrl = "/godfathers/sign-up";
 
   first_name: string = "";
   last_name: string = "";
   interests: string = "";
   password: string = "";
   email: string = "";
-  profile_image: string = "TEMPORAL";
+  profile_image: string = "";
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private httpClient: HttpClient,
               public alertCtrl: AlertController) {
