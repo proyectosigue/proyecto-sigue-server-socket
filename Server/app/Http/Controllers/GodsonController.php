@@ -5,26 +5,22 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
-use Hash;
 use Exception;
 
-use App\User;
-use App\Role;
+use App\Godson;
 
-class GodfatherController extends Controller
+class GodsonController extends Controller
 {
     public function index()
     {
-        $godfathers = User::whereHas('roles', function($q){
-            return $q->where('description', 'Padrino');
-        })->where('status', 1)->orderBy('id', 'asc')->get();
-        return response()->json($godfathers);
+        $godsons = Godson::orderBy('id', 'asc')->where('status', 1)->get();
+        return response()->json($godsons);
     }
-    
-    public function show(User $user)
+
+    public function show(Godson $godson)
     {
         try {
-            return response()->json(['user' => $user->get()]);
+            return response()->json(['godson' => $godson->get()]);
         } catch (Exception $e) {
             return response()->json(['status' => 'Error', 'messages' =>
                 ['Ocurrió un error al obtener'],
@@ -37,16 +33,15 @@ class GodfatherController extends Controller
         $validator = Validator::make($request->all(), [
             'first_name' => 'required',
             'last_name' => 'required',
-            'password' => 'required',
-            'email' => 'required|email',
-            //'profile_image' => 'required',
+            'orphan_house_id' => 'required',
+            'godfather_id' => 'required',
+            'age' => 'required'
         ], [
-            'password.required' => 'La contraseña es obligatoria',
-            'email.required' => 'El email es obligatorio',
-            'email.email' => 'El email debe ser válido',
-            'first_name.required' => 'Escriba su nombre por favor',
-            'last_name.required' => 'Escriba su apellido por favor',
-            // 'profile_image.required' => 'Su fotografía es obligatoria',
+            'first_name.required' => 'Escriba el nombre del ahijado',
+            'last_name.required' => 'Escriba el apellido',
+            'orphan_house_id.required' => 'Especifique una casa hogar',
+            'godfather_id.required' => 'Especifique un padrino',
+            'age' => 'Especifique la edad del ahijado'
         ]);
 
         if ($validator->fails()) {
@@ -54,12 +49,7 @@ class GodfatherController extends Controller
                 'messages' => $this->formattedValidatorErrorsArray($validator)]);
         }
 
-        if(count(User::where('email', $request->input('email'))->get()) > 0){
-            return response()->json(['status' => 'Error', 'messages' => ['El email ya está dado de alta']]);
-        }
-
         try {
-
             if(isset($request->profile_image)) {
                 $photoName = time() . '.' . $request->profile_image->getClientOriginalExtension();
                 $request->profile_image->move(storage_path('app/public/profile_images'), $photoName);
@@ -69,24 +59,22 @@ class GodfatherController extends Controller
                 $photography_url = "";
             }
 
-            $user = new User();
-            $user->fill([
+            $godson = new Godson();
+            $godson->fill([
                 'first_name' => $request->input('first_name'),
                 'last_name' => $request->input('last_name'),
-                'interests' => $request->input('interests'),
-                'password' => Hash::make($request->input('password')),
-                'email' => $request->input('email'),
-                'profile_image' => $photography_url
+                'profile_image' => $photography_url,
+                'age' => $request->input('age'),
+                'godfather_id' => $request->input('godfather_id'),
+                'orphan_house_id' => $request->input('orphan_house_id')
             ]);
-            $user->save();
+            $godson->save();
 
-            $user->roles()->attach(Role::where('description', 'Padrino')->first()->id);
-
-            return response()->json(['status' => 'Éxito', 'messages' => ['Se ha registrado al usuario como Padrino']]);
+            return response()->json(['status' => 'Éxito', 'messages' => ['Se ha registrado al usuario como Ahijado']]);
         } catch (Exception $e) {
             return response()->json(['status' => 'Error', 'messages' =>
                 ['Ocurrió un error en el registro'],
-                ['debug' => $e->getMessage(). ' on line '.$e->getLine()]]);
+                ['debug' => $e->getMessage()]]);
         }
     }
 

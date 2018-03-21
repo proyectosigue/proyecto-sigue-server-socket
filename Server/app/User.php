@@ -10,12 +10,16 @@ class User extends Authenticatable
     use Notifiable;
 
     protected $fillable = [
-        'id', 'first_name', 'last_name', 'email', 'interests', 'password', 'photography_url',
+        'id', 'first_name', 'last_name', 'email', 'interests', 'password', 'profile_image', 'status'
     ];
 
     protected $hidden = [ 'remember_token' ];
 
     public function roles(){
         return $this->belongsToMany(Role::class, 'roles_user', 'user_id', 'role_id');
+    }
+
+    public function godsons(){
+        return $this->hasMany(Godson::class, 'godfather_id','id');
     }
 }

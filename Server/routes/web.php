@@ -21,4 +21,5 @@ Route::post("login", "AuthenticateController@authenticate")->name("login");
 Route::post("godfathers/sign-up", "GodfatherController@store");
 Route::middleware(["jwt.auth"])->group(function () {
     Route::resource('godfathers', 'GodfatherController');
+    Route::resource('godsons', 'GodsonController');
 });
