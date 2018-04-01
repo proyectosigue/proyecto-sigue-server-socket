@@ -20,6 +20,12 @@ Route::get("/", function () {
 Route::post("login", "AuthenticateController@authenticate")->name("login");
 Route::post("godfathers/sign-up", "GodfatherController@store");
 Route::middleware(["jwt.auth"])->group(function () {
-    Route::resource('godfathers', 'GodfatherController');
+
+    Route::get('godfathers', 'UserController@index');
+    Route::get('godfathers/{user}', 'GodfatherController@show');
+    Route::post('godfathers', 'GodfatherController@store');
+    Route::put('godfathers/{user}', 'GodfatherController@update');
+    Route::delete('godfathers/{user}', 'GodfatherController@destroy');
+
     Route::resource('godsons', 'GodsonController');
 });

@@ -2,12 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
-
+use App\Http\Requests\GodfatherRequest;
 use Hash;
 use Exception;
-
 use App\User;
 use App\Role;
 
@@ -15,57 +12,33 @@ class GodfatherController extends Controller
 {
     public function index()
     {
-        $godfathers = User::whereHas('roles', function($q){
-            return $q->where('description', 'Padrino');
-        })->where('status', 1)->orderBy('id', 'asc')->get();
-        return response()->json($godfathers);
+        return response()->json(User::godfathers()->get());
     }
-    
+
     public function show(User $user)
     {
         try {
-            return response()->json(['user' => $user->get()]);
+            return response()->json(['user' => $user]);
         } catch (Exception $e) {
             return response()->json(['status' => 'Error', 'messages' =>
                 ['Ocurrió un error al obtener'],
-                ['debug' => $e->getMessage()]]);
+                ['debug' => $e->getMessage() . ' on line ' . $e->getLine()]]);
         }
     }
 
-    public function store(Request $request)
+    public function store(GodfatherRequest $request)
     {
-        $validator = Validator::make($request->all(), [
-            'first_name' => 'required',
-            'last_name' => 'required',
-            'password' => 'required',
-            'email' => 'required|email',
-            //'profile_image' => 'required',
-        ], [
-            'password.required' => 'La contraseña es obligatoria',
-            'email.required' => 'El email es obligatorio',
-            'email.email' => 'El email debe ser válido',
-            'first_name.required' => 'Escriba su nombre por favor',
-            'last_name.required' => 'Escriba su apellido por favor',
-            // 'profile_image.required' => 'Su fotografía es obligatoria',
-        ]);
-
-        if ($validator->fails()) {
-            return response()->json(['status' => 'Error',
-                'messages' => $this->formattedValidatorErrorsArray($validator)]);
-        }
-
-        if(count(User::where('email', $request->input('email'))->get()) > 0){
+        if (count(User::where('email', $request->input('email'))->get()) > 0) {
             return response()->json(['status' => 'Error', 'messages' => ['El email ya está dado de alta']]);
         }
 
         try {
 
-            if(isset($request->profile_image)) {
+            if (isset($request->profile_image)) {
                 $photoName = time() . '.' . $request->profile_image->getClientOriginalExtension();
                 $request->profile_image->move(storage_path('app/public/profile_images'), $photoName);
                 $photography_url = storage_path('app/public/profile_images') . '/' . $photoName;
-            }
-            else {
+            } else {
                 $photography_url = "";
             }
 
@@ -86,15 +59,57 @@ class GodfatherController extends Controller
         } catch (Exception $e) {
             return response()->json(['status' => 'Error', 'messages' =>
                 ['Ocurrió un error en el registro'],
-                ['debug' => $e->getMessage(). ' on line '.$e->getLine()]]);
+                ['debug' => $e->getMessage() . ' on line ' . $e->getLine()]]);
         }
     }
 
-    private function formattedValidatorErrorsArray($validator)
+    public function update(GodfatherRequest $request, $godfather)
     {
-        foreach ($validator->errors()->toArray() as $error) {
-            $errors[] = $error;
+
+        if (count(User::where('email', $request->input('email'))->get()) > 0) {
+            return response()->json(['status' => 'Error', 'messages' => ['El email ya está dado de alta']]);
         }
-        return $errors;
+
+        try {
+
+            if (isset($request->profile_image)) {
+                $photoName = time() . '.' . $request->profile_image->getClientOriginalExtension();
+                $request->profile_image->move(storage_path('app/public/profile_images'), $photoName);
+                $photography_url = storage_path('app/public/profile_images') . '/' . $photoName;
+            } else {
+                $photography_url = "";
+            }
+
+            $godfather = User::where('id', $godfather)->firstOrFail();
+            $godfather->fill([
+                'first_name' => $request->input('first_name'),
+                'last_name' => $request->input('last_name'),
+                'interests' => $request->input('interests'),
+                'password' => Hash::make($request->input('password')),
+                'email' => $request->input('email'),
+                'profile_image' => $photography_url
+            ]);
+            $godfather->save();
+
+            return response()->json(['status' => 'Éxito', 'messages' => ['Se ha actualizado la información del padrino']]);
+        } catch (Exception $e) {
+            return response()->json(['status' => 'Error', 'messages' =>
+                ['Ocurrió un error al actualizar'],
+                ['debug' => $e->getMessage() . ' on line ' . $e->getLine()]]);
+        }
+    }
+
+    public function destroy(User $user)
+    {
+        try {
+            $user->roles()->detach(Role::get());
+            $user->delete();
+            return response()->json(['status' => 'Éxito', 'messages' => ['Se ha borrado el padrino']]);
+        }
+        catch (Exception $e) {
+            return response()->json(['status' => 'Error', 'messages' =>
+                ['Ocurrió un error al borrar'],
+                ['debug' => $e->getMessage() . ' on line ' . $e->getLine()]]);
+        }
     }
 }

@@ -9,7 +9,6 @@ use Hash;
 use Exception;
 
 use App\User;
-use App\Role;
 
 class UserController extends Controller
 {
@@ -27,18 +26,6 @@ class UserController extends Controller
         } catch (Exception $e) {
             return response()->json(['status' => 'Error', 'messages' =>
                 ['Ocurrió un error al obtener'],
-                ['debug' => $e->getMessage()]]);
-        }
-    }
-
-    public function destroy($user)
-    {
-        try {
-            User::findOrFail($user)->delete();
-            return response()->json(['user' => 'Usuario borrado con éxito']);
-        } catch (Exception $e) {
-            return response()->json(['status' => 'Error', 'messages' =>
-                ['Ocurrió un error al borrar'],
                 ['debug' => $e->getMessage()]]);
         }
     }

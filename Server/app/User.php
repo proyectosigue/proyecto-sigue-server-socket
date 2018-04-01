@@ -22,4 +22,11 @@ class User extends Authenticatable
     public function godsons(){
         return $this->hasMany(Godson::class, 'godfather_id','id');
     }
+
+    public function scopeGodfathers($query){
+        return $query->whereHas('roles', function($q){
+            return $q->where('description', 'Padrino');
+        })->where('status', 1)->orderBy('id', 'asc');
+    }
+
 }
