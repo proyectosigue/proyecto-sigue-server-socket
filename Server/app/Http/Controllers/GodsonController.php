@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\User;
 use Exception;
 use App\Godson;
 use App\Http\Requests\GodsonRequest;
@@ -36,16 +38,14 @@ class GodsonController extends Controller
                 $photography_url = "";
             }
 
-            $godson = new Godson();
-            $godson->fill([
+            $godson = Godson::create([
                 'first_name' => $request->input('first_name'),
                 'last_name' => $request->input('last_name'),
                 'profile_image' => $photography_url,
                 'age' => $request->input('age'),
-                'godfather_id' => $request->input('godfather_id'),
                 'orphan_house_id' => $request->input('orphan_house_id')
             ]);
-            $godson->save();
+            $godson->godfathers()->toggle($request->input('godfather_id'));
 
             return response()->json(['status' => 'Éxito', 'messages' => ['Se ha registrado al usuario como Ahijado']]);
         } catch (Exception $e) {
@@ -67,15 +67,13 @@ class GodsonController extends Controller
                 $photography_url = "";
             }
 
-            $godson->fill([
+            $godson->update([
                 'first_name' => $request->input('first_name'),
                 'last_name' => $request->input('last_name'),
                 'profile_image' => $photography_url,
                 'age' => $request->input('age'),
-                'godfather_id' => $request->input('godfather_id'),
                 'orphan_house_id' => $request->input('orphan_house_id')
             ]);
-            $godson->save();
 
             return response()->json(['status' => 'Éxito', 'messages' => ['Se ha actualizado la información del ahijado']]);
         } catch (Exception $e) {
@@ -90,6 +88,16 @@ class GodsonController extends Controller
         try {
             $godson->delete();
             return response()->json(['status' => 'Éxito', 'messages' => ['Se ha borrado el ahijado']]);
+        } catch (Exception $e) {
+            return response()->json(['status' => 'Error', 'messages' =>
+                ['Ocurrió un error al borrar'],
+                ['debug' => $e->getMessage() . ' on line ' . $e->getLine()]]);
+        }
+    }
+
+    public function getGodfathers(Godson $godson){
+        try {
+            return response()->json(['status' => 'Éxito', 'data' => $godson->godfathers]);
         } catch (Exception $e) {
             return response()->json(['status' => 'Error', 'messages' =>
                 ['Ocurrió un error al borrar'],

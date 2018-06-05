@@ -13,6 +13,10 @@ class User extends Authenticatable
         'id', 'first_name', 'last_name', 'email', 'interests', 'password', 'profile_image', 'status'
     ];
 
+    protected $appends = [
+        'full_name'
+    ];
+
     protected $hidden = [ 'remember_token' ];
 
     public function roles(){
@@ -20,13 +24,17 @@ class User extends Authenticatable
     }
 
     public function godsons(){
-        return $this->hasMany(Godson::class, 'godfather_id','id');
+        return $this->belongsToMany(Godson::class)->withTimestamps();
     }
 
     public function scopeGodfathers($query){
         return $query->whereHas('roles', function($q){
             return $q->where('description', 'Padrino');
         })->where('status', 1)->orderBy('id', 'asc');
+    }
+
+    public function getFullNameAttribute(){
+        return $this->first_name.' '.$this->last_name;
     }
 
 }

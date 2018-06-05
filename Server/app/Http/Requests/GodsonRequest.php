@@ -30,7 +30,6 @@ class GodsonRequest extends FormRequest
             'first_name' => 'required',
             'last_name' => 'required',
             'orphan_house_id' => 'required',
-            'godfather_id' => 'required',
             'age' => 'required'
         ];
     }
@@ -41,7 +40,6 @@ class GodsonRequest extends FormRequest
             'first_name.required' => 'Escriba el nombre del ahijado',
             'last_name.required' => 'Escriba el apellido',
             'orphan_house_id.required' => 'Especifique una casa hogar',
-            'godfather_id.required' => 'Especifique un padrino',
             'age.required' => 'Especifique la edad del ahijado'
         ];
     }

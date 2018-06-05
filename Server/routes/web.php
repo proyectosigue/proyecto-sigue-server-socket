@@ -24,8 +24,11 @@ Route::middleware(["jwt.auth"])->group(function () {
     Route::get('godfathers', 'UserController@index');
     Route::get('godfathers/{user}', 'GodfatherController@show');
     Route::post('godfathers', 'GodfatherController@store');
+    Route::post('godfathers/{user}/godson/{godson}', 'GodfatherController@toggleGodson');
     Route::put('godfathers/{user}', 'GodfatherController@update');
     Route::delete('godfathers/{user}', 'GodfatherController@destroy');
+    Route::get('godfathers/{user}/godsons', 'GodfatherController@getGodsons');
 
+    Route::get('godson/{godson}/godfathers', 'GodsonController@getGodfathers');
     Route::resource('godsons', 'GodsonController');
 });

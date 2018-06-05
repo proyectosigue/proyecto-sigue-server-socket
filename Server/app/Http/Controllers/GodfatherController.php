@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\GodfatherRequest;
 use Hash;
-use Exception;
 use App\User;
 use App\Role;
+use Exception;
+use App\Godson;
+use App\Http\Requests\GodfatherRequest;
 
 class GodfatherController extends Controller
 {
@@ -42,8 +43,7 @@ class GodfatherController extends Controller
                 $photography_url = "";
             }
 
-            $user = new User();
-            $user->fill([
+            $user = User::create([
                 'first_name' => $request->input('first_name'),
                 'last_name' => $request->input('last_name'),
                 'interests' => $request->input('interests'),
@@ -51,8 +51,6 @@ class GodfatherController extends Controller
                 'email' => $request->input('email'),
                 'profile_image' => $photography_url
             ]);
-            $user->save();
-
             $user->roles()->attach(Role::where('description', 'Padrino')->first()->id);
 
             return response()->json(['status' => 'Éxito', 'messages' => ['Se ha registrado al usuario como Padrino']]);
@@ -80,8 +78,7 @@ class GodfatherController extends Controller
                 $photography_url = "";
             }
 
-            $godfather = User::where('id', $godfather)->firstOrFail();
-            $godfather->fill([
+            $godfather->update([
                 'first_name' => $request->input('first_name'),
                 'last_name' => $request->input('last_name'),
                 'interests' => $request->input('interests'),
@@ -89,7 +86,6 @@ class GodfatherController extends Controller
                 'email' => $request->input('email'),
                 'profile_image' => $photography_url
             ]);
-            $godfather->save();
 
             return response()->json(['status' => 'Éxito', 'messages' => ['Se ha actualizado la información del padrino']]);
         } catch (Exception $e) {
@@ -112,4 +108,33 @@ class GodfatherController extends Controller
                 ['debug' => $e->getMessage() . ' on line ' . $e->getLine()]]);
         }
     }
+
+    public function toggleGodson(User $user, Godson $godson){
+        try {
+
+            $user->godsons()->toggle($godson->id);
+
+            if($user->godsons()->where('id', $godson->id)->first() != null){
+                return response()->json(['status' => 'Éxito', 'message' => 'El padrino ha comenzado a apadrinar al ahijado']);
+            }
+
+            return response()->json(['status' => 'Éxito', 'message' => 'El padrino ha dejado de apadrinar al ahijado']);
+
+        } catch (Exception $e) {
+            return response()->json(['status' => 'Error', 'messages' =>
+                ['Ocurrió un error al borrar'],
+                ['debug' => $e->getMessage() . ' on line ' . $e->getLine()]]);
+        }
+    }
+
+    public function getGodsons(User $user){
+        try {
+            return response()->json(['status' => 'Éxito', 'data' => $user->godsons]);
+        } catch (Exception $e) {
+            return response()->json(['status' => 'Error', 'messages' =>
+                ['Ocurrió un error al borrar'],
+                ['debug' => $e->getMessage() . ' on line ' . $e->getLine()]]);
+        }
+    }
+
 }

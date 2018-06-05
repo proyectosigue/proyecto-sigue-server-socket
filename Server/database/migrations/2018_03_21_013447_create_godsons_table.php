@@ -20,7 +20,6 @@ class CreateGodsonsTable extends Migration
            $table->integer('age');
            $table->integer('orphan_house_id');
            $table->string('profile_image')->nullable();
-           $table->tinyInteger('godfather_id');
            $table->tinyInteger('status')->default(1);
            $table->timestamps();
         });
