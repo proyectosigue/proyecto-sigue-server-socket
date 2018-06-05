@@ -18,6 +18,7 @@ import { GodfathersPage} from "../pages/godfathers/godfathers";
 import { GodsonsPage } from "../pages/godsons/godsons";
 import { GodfathersPopoverPage } from "../pages/godfathers-popover/godfathers-popover";
 import { UserProvider } from '../providers/user/user';
+import { GodsonProvider } from '../providers/godson/godson';
 
 
 @NgModule({
@@ -57,7 +58,8 @@ import { UserProvider } from '../providers/user/user';
     SplashScreen,
     NativeStorage,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    UserProvider
+    UserProvider,
+    GodsonProvider
   ]
 })
 export class AppModule {}

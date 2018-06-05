@@ -19,6 +19,8 @@ import {TabsPage} from "../tabs/tabs";
 })
 export class GodfathersPage {
 
+  godfathers: any;
+
   constructor(public navCtrl: NavController, public navParams: NavParams, public popoverCtrl: PopoverController,
               private userProvider: UserProvider) {
   }
@@ -27,7 +29,9 @@ export class GodfathersPage {
     console.log('ionViewDidLoad GodfathersPage');
     this.userProvider.getGodfathers().then((res: any) => {
       res.subscribe( (data:any ) => {
-        console.log(data);
+
+        this.godfathers = data;
+
       });
     });
   }

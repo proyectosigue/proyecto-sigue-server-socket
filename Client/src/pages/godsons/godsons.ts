@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {NativeStorage} from "@ionic-native/native-storage";
+import {GodsonProvider} from "../../providers/godson/godson";
 
 /**
  * Generated class for the GodsonsPage page.
@@ -15,11 +18,21 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class GodsonsPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  godsons: any;
+
+  constructor(public http: HttpClient, private godsonProvider: GodsonProvider) {
+    this.loadGodsons();
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad GodsonsPage');
+  private loadGodsons(){
+    console.log('ionViewDidLoad GodfathersPage');
+    this.godsonProvider.getGodsons().then((res: any) => {
+      res.subscribe( (data:any ) => {
+
+        this.godsons = data;
+
+      });
+    });
   }
 
 }

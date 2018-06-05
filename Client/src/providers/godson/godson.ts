@@ -1,38 +1,25 @@
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import {TabsPage} from "../../pages/tabs/tabs";
 import {NativeStorage} from "@ionic-native/native-storage";
 
 /*
-  Generated class for the UserProvider provider.
+  Generated class for the GodsonProvider provider.
 
   See https://angular.io/guide/dependency-injection for more info on providers
   and Angular DI.
 */
 @Injectable()
-export class UserProvider {
+export class GodsonProvider {
 
   apiURL: string;
-  signInURL: string;
-  getGodfathersURL: string;
+  getGodsonsURL: string;
 
   constructor(public http: HttpClient, private nativeStorage: NativeStorage) {
     this.apiURL = "http://localhost:8010";
-    this.signInURL = "/login";
-    this.getGodfathersURL = "/godfathers";
+    this.getGodsonsURL = "/godsons";
   }
 
-  validateUser(email, password){
-    let headers = new HttpHeaders();
-    headers = headers.append('Content-Type','application/json');
-    headers = headers.append('Accept','application/json');
-    let _options = { headers: headers };
-
-    let userData = {"email": email, "password": password };
-    return this.http.post(this.apiURL + this.signInURL, userData, _options);
-  }
-
-  getGodfathers(){
+  getGodsons(){
     return new Promise((resolve) => {
       this.nativeStorage.getItem("session").then(res => {
 
@@ -42,7 +29,7 @@ export class UserProvider {
         headers = headers.append('Authorization', 'Bearer ' + res.token);
         let _options = { headers: headers };
 
-        resolve(this.http.get(this.apiURL + this.getGodfathersURL, _options));
+        resolve(this.http.get(this.apiURL + this.getGodsonsURL, _options));
       });
     });
   }
