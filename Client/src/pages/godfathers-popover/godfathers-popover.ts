@@ -17,13 +17,9 @@ export class GodfathersPopoverPage {
   }
 
   pushSignUp() {
-    this.close();
-    // TODO Averiguar por qué da error al terminar registro si se usa navCtrl, y por qué no permite regresar
-    this.appCtrl.getRootNav().push(RegisterPage);
-  }
-
-  close() {
-    this.viewCtrl.dismiss();
+    this.viewCtrl.dismiss().then(() => {
+      this.appCtrl.getRootNav().push(RegisterPage);
+    });
   }
 
 }

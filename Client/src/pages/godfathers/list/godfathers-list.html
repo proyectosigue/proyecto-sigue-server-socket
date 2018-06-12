@@ -15,7 +15,7 @@
   <ion-list>
     <ion-item-sliding *ngFor="let godfather of godfathers">
 
-      <ion-item>
+      <ion-item [navPush]="godfathersDetailPage" [navParams]="godfather">
         <ion-avatar item-start>
           <img src="{{ godfather.profile_image }}" width="40" height="40">
         </ion-avatar>

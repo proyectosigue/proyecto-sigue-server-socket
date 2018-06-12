@@ -1,28 +1,25 @@
 import {Component} from '@angular/core';
 import {IonicPage, NavController, NavParams, PopoverController} from 'ionic-angular';
-import {GodfathersPopoverPage} from "../godfathers-popover/godfathers-popover";
-import {RegisterPage} from "../register/register";
-import {UserProvider} from "../../providers/user/user";
-import {TabsPage} from "../tabs/tabs";
+import {GodfathersPopoverPage} from "../../godfathers-popover/godfathers-popover";
+import {RegisterPage} from "../../register/register";
+import {UserProvider} from "../../../providers/user/user";
+import {GodfathersDetailPage} from "../detail/godfathers-detail";
+import {TabsPage} from "../../tabs/tabs";
 
-/**
- * Generated class for the GodfathersPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
   selector: 'page-godfathers',
-  templateUrl: 'godfathers.html',
+  templateUrl: 'godfathers-list.html',
 })
 export class GodfathersPage {
 
   godfathers: any;
+  godfathersDetailPage: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public popoverCtrl: PopoverController,
               private userProvider: UserProvider) {
+    this.godfathersDetailPage = GodfathersDetailPage;
   }
 
   ionViewDidLoad() {

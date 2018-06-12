@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { GodfathersPage } from './godfathers';
+import { GodfathersPage } from './godfathers-list';
 
 @NgModule({
   declarations: [

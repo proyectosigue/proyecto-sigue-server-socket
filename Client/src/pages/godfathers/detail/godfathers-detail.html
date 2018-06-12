@@ -1,0 +1,39 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{ godfather.full_name }}</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="presentPopover($event)">
+        <ion-icon name="more"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+
+  <ion-grid>
+    <ion-row class="profile-image-row">
+      <ion-col>
+        <img src="https://www.biography.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cg_face%2Cq_auto:good%2Cw_300/MTE4MDAzNDEwNzg5ODI4MTEw/barack-obama-12782369-1-402.jpg">
+      </ion-col>
+    </ion-row>
+    <ion-row class="profile-summary-row">
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <h2>{{ godfather.full_name }}</h2>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-icon name="mail"></ion-icon> {{ godfather.email }}
+        </ion-row>
+        <ion-row>
+          <ion-icon name="time"></ion-icon> {{ godfather.interests }}
+        </ion-row>
+      </ion-grid>
+    </ion-row>
+  </ion-grid>
+  <button ion-button block (click)="presentActionSheet()">Acciones</button>
+</ion-content>

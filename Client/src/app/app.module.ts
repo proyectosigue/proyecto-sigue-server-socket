@@ -14,9 +14,13 @@ import { RegisterPage } from "../pages/register/register";
 import { HomeAdminPage } from '../pages/home-admin/home-admin'
 import { HomeUserPage } from '../pages/home-user/home-user'
 import { TabsPage } from '../pages/tabs/tabs';
-import { GodfathersPage} from "../pages/godfathers/godfathers";
-import { GodsonsPage } from "../pages/godsons/godsons";
+import { GodfathersPage} from "../pages/godfathers/list/godfathers-list";
 import { GodfathersPopoverPage } from "../pages/godfathers-popover/godfathers-popover";
+import { GodfathersDetailPage } from "../pages/godfathers/detail/godfathers-detail";
+import { GodfathersDetailPopoverPage } from "../pages/godfathers/detail/popover/godfathers-detail-popover";
+import { GodsonsPage } from "../pages/godsons/list/godsons-list";
+import { GodsonsPopoverPage } from "../pages/godsons/list/popover/godsons-popover";
+import { GodsonsDetailPage } from "../pages/godsons/detail/godsons-detail";
 import { UserProvider } from '../providers/user/user';
 import { GodsonProvider } from '../providers/godson/godson';
 
@@ -31,8 +35,12 @@ import { GodsonProvider } from '../providers/godson/godson';
     HomeAdminPage,
     HomeUserPage,
     GodfathersPage,
+    GodfathersDetailPage,
+    GodfathersDetailPopoverPage,
     GodfathersPopoverPage,
-    GodsonsPage
+    GodsonsPage,
+    GodsonsPopoverPage,
+    GodsonsDetailPage
   ],
   imports: [
     BrowserModule,
@@ -50,8 +58,12 @@ import { GodsonProvider } from '../providers/godson/godson';
     HomeAdminPage,
     HomeUserPage,
     GodfathersPage,
+    GodfathersDetailPage,
+    GodfathersDetailPopoverPage,
     GodfathersPopoverPage,
-    GodsonsPage
+    GodsonsPage,
+    GodsonsPopoverPage,
+    GodsonsDetailPage
   ],
   providers: [
     StatusBar,

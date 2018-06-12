@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { AboutPage } from '../about/about';
-import { GodfathersPage } from '../godfathers/godfathers';
-import { GodsonsPage } from '../godsons/godsons';
+import { GodfathersPage } from '../godfathers/list/godfathers-list';
+import { GodsonsPage } from '../godsons/list/godsons-list';
 
 @Component({
   templateUrl: 'tabs.html'
