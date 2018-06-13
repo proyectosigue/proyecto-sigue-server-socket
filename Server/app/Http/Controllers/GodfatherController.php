@@ -7,6 +7,7 @@ use App\User;
 use App\Role;
 use Exception;
 use App\Godson;
+use Illuminate\Http\Request;
 use App\Http\Requests\GodfatherRequest;
 
 class GodfatherController extends Controller
@@ -53,9 +54,17 @@ class GodfatherController extends Controller
             ]);
             $user->roles()->attach(Role::where('description', 'Padrino')->first()->id);
 
-            return response()->json(['status' => 'Éxito', 'messages' => ['Se ha registrado al usuario como Padrino']]);
+            return response()->json([
+                'header' => 'Éxito',
+                'status' => 'success',
+                'messages' => ['Se ha registrado al usuario como Padrino'],
+                'data' => [
+                    'id' => $user->id
+                ]
+            ]);
+
         } catch (Exception $e) {
-            return response()->json(['status' => 'Error', 'messages' =>
+            return response()->json(['header' => 'Error', 'status' => 'error', 'messages' =>
                 ['Ocurrió un error en el registro'],
                 ['debug' => $e->getMessage() . ' on line ' . $e->getLine()]]);
         }
@@ -101,20 +110,25 @@ class GodfatherController extends Controller
             $user->roles()->detach(Role::get());
             $user->delete();
             return response()->json(['status' => 'Éxito', 'messages' => ['Se ha borrado el padrino']]);
-        }
-        catch (Exception $e) {
+        } catch (Exception $e) {
             return response()->json(['status' => 'Error', 'messages' =>
                 ['Ocurrió un error al borrar'],
                 ['debug' => $e->getMessage() . ' on line ' . $e->getLine()]]);
         }
     }
 
-    public function toggleGodson(User $user, Godson $godson){
+    public function uploadProfileImage(Request $request, User $user)
+    {
+        return response()->json(["request" => $request->toArray(), "ex" => "exxxample"]);
+    }
+
+    public function toggleGodson(User $user, Godson $godson)
+    {
         try {
 
             $user->godsons()->toggle($godson->id);
 
-            if($user->godsons()->where('id', $godson->id)->first() != null){
+            if ($user->godsons()->where('id', $godson->id)->first() != null) {
                 return response()->json(['status' => 'Éxito', 'message' => 'El padrino ha comenzado a apadrinar al ahijado']);
             }
 
@@ -127,7 +141,9 @@ class GodfatherController extends Controller
         }
     }
 
-    public function getGodsons(User $user){
+    public
+    function getGodsons(User $user)
+    {
         try {
             return response()->json(['status' => 'Éxito', 'data' => $user->godsons]);
         } catch (Exception $e) {
