@@ -23,6 +23,9 @@ import { GodsonsPopoverPage } from "../pages/godsons/list/popover/godsons-popove
 import { GodsonsDetailPage } from "../pages/godsons/detail/godsons-detail";
 import { UserProvider } from '../providers/user/user';
 import { GodsonProvider } from '../providers/godson/godson';
+import {File} from "@ionic-native/file";
+import {FileTransfer, FileTransferObject, FileUploadOptions} from "@ionic-native/file-transfer";
+import {Camera} from "@ionic-native/camera";
 
 
 @NgModule({
@@ -69,6 +72,9 @@ import { GodsonProvider } from '../providers/godson/godson';
     StatusBar,
     SplashScreen,
     NativeStorage,
+    File,
+    FileTransfer,
+    Camera,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     UserProvider,
     GodsonProvider

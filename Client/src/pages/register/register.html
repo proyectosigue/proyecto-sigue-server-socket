@@ -36,6 +36,15 @@
     </ion-item>
 
     <ion-item>
+        <p>{{imageURI}}</p>
+        <ion-input type="file" (click)="getImage()" #fileInput>Get Image</ion-input>
+      </ion-item>
+      <ion-item>
+        <h4>Image Preview</h4>
+        <img src="{{imageURI}}" *ngIf="imageURI" alt="Ionic File" width="300" />
+      </ion-item>
+
+    <ion-item>
       <ion-label floating>Intereses</ion-label>
       <ion-input type="text" name="interests" [(ngModel)]="interests"></ion-input>
     </ion-item>

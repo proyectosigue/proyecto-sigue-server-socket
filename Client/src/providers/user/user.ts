@@ -47,4 +47,19 @@ export class UserProvider {
     });
   }
 
+  uploadProfileImage(formModel, userId){
+    return new Promise((resolve) => {
+      this.nativeStorage.getItem("session").then(res => {
+
+        let headers = new HttpHeaders();
+        headers = headers.append('Content-Type','application/json');
+        headers = headers.append('Accept','application/json');
+        headers = headers.append('Authorization', 'Bearer ' + res.token);
+        let _options = { headers: headers };
+
+        resolve(this.http.post("http://localhost:8010/godfathers/" + userId + "/upload-profile-image", formModel, _options));
+      });
+    });
+  }
+
 }
