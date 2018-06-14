@@ -9,6 +9,7 @@ use Exception;
 use App\Godson;
 use Illuminate\Http\Request;
 use App\Http\Requests\GodfatherRequest;
+use Illuminate\Support\Facades\Storage;
 
 class GodfatherController extends Controller
 {
@@ -36,21 +37,13 @@ class GodfatherController extends Controller
 
         try {
 
-            if (isset($request->profile_image)) {
-                $photoName = time() . '.' . $request->profile_image->getClientOriginalExtension();
-                $request->profile_image->move(storage_path('app/public/profile_images'), $photoName);
-                $photography_url = storage_path('app/public/profile_images') . '/' . $photoName;
-            } else {
-                $photography_url = "";
-            }
-
             $user = User::create([
                 'first_name' => $request->input('first_name'),
                 'last_name' => $request->input('last_name'),
                 'interests' => $request->input('interests'),
                 'password' => Hash::make($request->input('password')),
                 'email' => $request->input('email'),
-                'profile_image' => $photography_url
+                'profile_image' => ''
             ]);
             $user->roles()->attach(Role::where('description', 'Padrino')->first()->id);
 
@@ -79,21 +72,13 @@ class GodfatherController extends Controller
 
         try {
 
-            if (isset($request->profile_image)) {
-                $photoName = time() . '.' . $request->profile_image->getClientOriginalExtension();
-                $request->profile_image->move(storage_path('app/public/profile_images'), $photoName);
-                $photography_url = storage_path('app/public/profile_images') . '/' . $photoName;
-            } else {
-                $photography_url = "";
-            }
-
             $godfather->update([
                 'first_name' => $request->input('first_name'),
                 'last_name' => $request->input('last_name'),
                 'interests' => $request->input('interests'),
                 'password' => Hash::make($request->input('password')),
                 'email' => $request->input('email'),
-                'profile_image' => $photography_url
+                'profile_image' => '',
             ]);
 
             return response()->json(['status' => 'Éxito', 'messages' => ['Se ha actualizado la información del padrino']]);
@@ -119,7 +104,31 @@ class GodfatherController extends Controller
 
     public function uploadProfileImage(Request $request, User $user)
     {
-        return response()->json(["request" => $request->toArray(), "ex" => "exxxample"]);
+        try {
+            if($user->profile_image !== null && $user->profile_image !== ""){
+                Storage::delete($user->profile_image);
+                $user->profile_image = "";
+            }
+
+            $file_date_title = date('H_i_s').'_profile_image.jpeg';
+            $full_file_address = "profile-images/$file_date_title";
+            Storage::put($full_file_address, base64_decode($request->profile_image['value']));
+
+            $user->profile_image = $full_file_address;
+            $user->save();
+
+            return response()->json([
+                'header' => 'Éxito',
+                'status' => 'success',
+                'messages' => ['Se ha colocado la foto de perfil']
+            ]);
+        } catch (Exception $e) {
+            return response()->json([
+                'header' => 'Error',
+                'status' => 'error',
+                'messages' => ['Ocurrió un error, contacte al soporte'],
+                ['debug' => $e->getMessage() . ' on line ' . $e->getLine()]]);
+        }
     }
 
     public function toggleGodson(User $user, Godson $godson)
