@@ -34,7 +34,6 @@ export class RegisterPage {
   profile_image: string = "";
   imageURI: any;
   imageData: any;
-  imageFileName: any;
   form: FormGroup;
 
   @ViewChild('fileInput') fileInput: ElementRef;
@@ -73,9 +72,7 @@ export class RegisterPage {
         switch(signUpRes.status) {
           case "success":
             if (this.imageURI !== "") {
-              console.log(this.form);
-              const formModel = this.form.value;
-              self.userProvider.uploadProfileImage(formModel, signUpRes.data.id).then((res:any) => {
+              self.userProvider.uploadProfileImage(self.form.value, signUpRes.data.id).then((res:any) => {
                 res.subscribe((data: any) => {
                   console.log(data);
                   this.presentResponse(signUpRes);
@@ -119,16 +116,17 @@ export class RegisterPage {
     const options: CameraOptions = {
       quality: 100,
       destinationType: this.camera.DestinationType.FILE_URI,
-      sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
+      encodingType: this.camera.EncodingType.JPEG,
+      sourceType: 0,
     };
 
-    this.camera.getPicture(options).then((imageData) => {
+   this.camera.getPicture(options).then((imageData) => {
       this.imageURI = "data:image/jpeg;base64," + imageData;
       this.imageData = imageData;
 
       this.form.get('profile_image').setValue({
-        filename: "name.jpg",
-        filetype: "jpg",
+        filename: "profile_image",
+        filetype: "jpeg",
         value: imageData
       });
 
