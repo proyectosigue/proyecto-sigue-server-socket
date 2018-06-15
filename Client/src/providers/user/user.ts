@@ -1,65 +1,23 @@
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import {TabsPage} from "../../pages/tabs/tabs";
 import {NativeStorage} from "@ionic-native/native-storage";
+import {Singleton} from "../singleton/singleton";
 
-/*
-  Generated class for the UserProvider provider.
-
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
 @Injectable()
 export class UserProvider {
 
-  apiURL: string;
-  signInURL: string;
-  getGodfathersURL: string;
+  LOGIN = "login";
+  SIGN_UP = "godfathers/sign-up";
 
-  constructor(public http: HttpClient, private nativeStorage: NativeStorage) {
-    this.apiURL = "http://localhost:8010";
-    this.signInURL = "/login";
-    this.getGodfathersURL = "/godfathers";
-  }
+  constructor(public http: HttpClient, private nativeStorage: NativeStorage, private singletonService: Singleton) {}
 
   validateUser(email, password){
-    let headers = new HttpHeaders();
-    headers = headers.append('Content-Type','application/json');
-    headers = headers.append('Accept','application/json');
-    let _options = { headers: headers };
-
-    let userData = {"email": email, "password": password };
-    return this.http.post(this.apiURL + this.signInURL, userData, _options);
+    let userData = { "email": email, "password": password };
+    return this.singletonService.post(this.LOGIN, userData, false);
   }
 
-  getGodfathers(){
-    return new Promise((resolve) => {
-      this.nativeStorage.getItem("session").then(res => {
-
-        let headers = new HttpHeaders();
-        headers = headers.append('Content-Type','application/json');
-        headers = headers.append('Accept','application/json');
-        headers = headers.append('Authorization', 'Bearer ' + res.token);
-        let _options = { headers: headers };
-
-        resolve(this.http.get(this.apiURL + this.getGodfathersURL, _options));
-      });
-    });
-  }
-
-  uploadProfileImage(formModel, userId){
-    return new Promise((resolve) => {
-      this.nativeStorage.getItem("session").then(res => {
-
-        let headers = new HttpHeaders();
-        headers = headers.append('Content-Type','application/json');
-        headers = headers.append('Accept','application/json');
-        headers = headers.append('Authorization', 'Bearer ' + res.token);
-        let _options = { headers: headers };
-
-        resolve(this.http.post("http://localhost:8010/godfathers/" + userId + "/upload-profile-image", formModel, _options));
-      });
-    });
+  signUp(userData) {
+    return this.singletonService.post(this.SIGN_UP, userData, false);
   }
 
 }

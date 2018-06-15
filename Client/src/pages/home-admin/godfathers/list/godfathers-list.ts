@@ -1,11 +1,8 @@
 import {Component} from '@angular/core';
 import {IonicPage, NavController, NavParams, PopoverController} from 'ionic-angular';
-import {GodfathersPopoverPage} from "../../godfathers-popover/godfathers-popover";
-import {RegisterPage} from "../../register/register";
-import {UserProvider} from "../../../providers/user/user";
+import {GodfathersPopoverPage} from "./godfathers-popover/godfathers-popover";
 import {GodfathersDetailPage} from "../detail/godfathers-detail";
-import {TabsPage} from "../../tabs/tabs";
-
+import {GodfatherProvider} from "../../../../providers/godfather/godfather";
 
 @IonicPage()
 @Component({
@@ -18,18 +15,14 @@ export class GodfathersPage {
   godfathersDetailPage: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public popoverCtrl: PopoverController,
-              private userProvider: UserProvider) {
+              private godfatherProvider: GodfatherProvider) {
     this.godfathersDetailPage = GodfathersDetailPage;
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad GodfathersPage');
-    this.userProvider.getGodfathers().then((res: any) => {
-      res.subscribe( (data:any ) => {
-
-        this.godfathers = data;
-
-      });
+    this.godfatherProvider.getGodfathers().subscribe((data: any) => {
+      this.godfathers = data;
     });
   }
 

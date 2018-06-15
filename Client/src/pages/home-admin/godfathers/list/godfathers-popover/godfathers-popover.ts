@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
-import {IonicPage, NavController, NavParams, ViewController, App} from 'ionic-angular';
-import {RegisterPage} from "../register/register";
+import {IonicPage, NavController, ViewController, App} from 'ionic-angular';
+import {RegisterPage} from "../../../../register/register";
 
 @IonicPage()
 @Component({
@@ -13,8 +13,7 @@ import {RegisterPage} from "../register/register";
 })
 export class GodfathersPopoverPage {
 
-  constructor(public viewCtrl: ViewController, public navCtrl: NavController, public appCtrl: App) {
-  }
+  constructor(public viewCtrl: ViewController, public navCtrl: NavController, public appCtrl: App) {}
 
   pushSignUp() {
     this.viewCtrl.dismiss().then(() => {

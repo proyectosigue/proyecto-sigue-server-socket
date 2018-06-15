@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import {IonicPage, NavController, NavParams, PopoverController} from 'ionic-angular';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {NativeStorage} from "@ionic-native/native-storage";
-import {GodsonProvider} from "../../../providers/godson/godson";
+import {GodsonProvider} from "../../../../providers/godson/godson";
 import {GodsonsDetailPage} from "../detail/godsons-detail";
 import {GodsonsPopoverPage} from "./popover/godsons-popover";
 
