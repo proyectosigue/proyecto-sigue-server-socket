@@ -17,28 +17,43 @@ class User extends Authenticatable
         'full_name', 'profile_image'
     ];
 
-    protected $hidden = [ 'remember_token' ];
+    protected $hidden = ['remember_token'];
 
-    public function roles(){
+    public function roles()
+    {
         return $this->belongsToMany(Role::class, 'roles_user', 'user_id', 'role_id');
     }
 
-    public function godsons(){
+    public function godsons()
+    {
         return $this->belongsToMany(Godson::class)->withTimestamps();
     }
 
-    public function scopeGodfathers($query){
-        return $query->whereHas('roles', function($q){
+    public function issuingThreads()
+    {
+        return $this->hasMany(Thread::class, 'user_id_issuing', 'id');
+    }
+
+    public function receiverThreads()
+    {
+        return $this->hasMany(Thread::class, 'user_id_receiver', 'id');
+    }
+
+    public function scopeGodfathers($query)
+    {
+        return $query->whereHas('roles', function ($q) {
             return $q->where('description', 'Padrino');
         })->where('status', 1)->orderBy('id', 'asc');
     }
 
-    public function getFullNameAttribute(){
-        return $this->first_name.' '.$this->last_name;
+    public function getFullNameAttribute()
+    {
+        return $this->first_name . ' ' . $this->last_name;
     }
 
-    public function getProfileImageAttribute(){
-        return asset("storage/".$this->attributes['profile_image']);
+    public function getProfileImageAttribute()
+    {
+        return asset("storage/" . $this->attributes['profile_image']);
     }
 
 }
