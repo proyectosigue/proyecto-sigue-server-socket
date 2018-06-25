@@ -18,6 +18,8 @@ import { GodfathersPage} from "../pages/home-admin/godfathers/list/godfathers-li
 import { GodfathersPopoverPage } from "../pages/home-admin/godfathers/list/godfathers-popover/godfathers-popover";
 import { GodfathersDetailPage } from "../pages/home-admin/godfathers/detail/godfathers-detail";
 import { GodfathersDetailPopoverPage } from "../pages/home-admin/godfathers/detail/popover/godfathers-detail-popover";
+import { GodfatherTopicsListPage } from "../pages/home-admin/godfathers/topics-list/godfather-topics-list";
+import { GodfatherTopicsListPopoverPage } from "../pages/home-admin/godfathers/topics-list/popover/godfather-topics-list-popover";
 import { GodsonsPage } from "../pages/home-admin/godsons/list/godsons-list";
 import { GodsonsPopoverPage } from "../pages/home-admin/godsons/list/popover/godsons-popover";
 import { GodsonsDetailPage } from "../pages/home-admin/godsons/detail/godsons-detail";
@@ -27,6 +29,9 @@ import {File} from "@ionic-native/file";
 import {Camera} from "@ionic-native/camera";
 import { GodfatherProvider } from '../providers/godfather/godfather';
 import { Singleton } from '../providers/singleton/singleton';
+import { TruncateModule } from "ng2-truncate";
+import {LastElementPipe} from "../pipes/last-element/last-element";
+import { ThreadProvider } from '../providers/thread/thread';
 
 
 @NgModule({
@@ -42,15 +47,19 @@ import { Singleton } from '../providers/singleton/singleton';
     GodfathersDetailPage,
     GodfathersDetailPopoverPage,
     GodfathersPopoverPage,
+    GodfatherTopicsListPage,
+    GodfatherTopicsListPopoverPage,
     GodsonsPage,
     GodsonsPopoverPage,
-    GodsonsDetailPage
+    GodsonsDetailPage,
+    LastElementPipe,
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    TruncateModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -64,10 +73,12 @@ import { Singleton } from '../providers/singleton/singleton';
     GodfathersPage,
     GodfathersDetailPage,
     GodfathersDetailPopoverPage,
+    GodfatherTopicsListPage,
+    GodfatherTopicsListPopoverPage,
     GodfathersPopoverPage,
     GodsonsPage,
     GodsonsPopoverPage,
-    GodsonsDetailPage
+    GodsonsDetailPage,
   ],
   providers: [
     StatusBar,
@@ -79,7 +90,8 @@ import { Singleton } from '../providers/singleton/singleton';
     UserProvider,
     GodsonProvider,
     GodfatherProvider,
-    Singleton
+    Singleton,
+    ThreadProvider
   ]
 })
 export class AppModule {}

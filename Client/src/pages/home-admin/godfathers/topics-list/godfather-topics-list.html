@@ -1,0 +1,24 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Temas de {{ godfather.first_name }}</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="presentPopover($event)">
+        <ion-icon name="more"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <ion-item *ngIf="threads?.length === 0">
+    <h2>No hay temas con éste padrino aún.</h2>
+  </ion-item>
+  <ion-list *ngIf="threads?.length > 0">
+    <ion-item *ngFor="let thread of threads">
+        <h2>{{ thread.subject }}</h2>
+        <p *ngFor="let message of thread.messages">{{ message.body | truncate: 30 : "..." | lastElement:true }}</p>
+    </ion-item>
+  </ion-list>
+</ion-content>

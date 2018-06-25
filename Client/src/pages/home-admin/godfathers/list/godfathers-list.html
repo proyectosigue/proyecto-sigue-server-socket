@@ -22,13 +22,9 @@
         <h2>{{ godfather.full_name }}</h2>
       </ion-item>
       <ion-item-options side="right">
-        <button ion-button color="primary">
+        <button ion-button color="primary" [navPush]="godfatherTopicsListPage" [navParams]="godfather">
           <ion-icon name="text"></ion-icon>
-          Mensaje
-        </button>
-        <button ion-button color="primary">
-          <ion-icon name="mail"></ion-icon>
-          Email
+          Temas
         </button>
         <button ion-button color="secondary">
           <ion-icon name="mail"></ion-icon>

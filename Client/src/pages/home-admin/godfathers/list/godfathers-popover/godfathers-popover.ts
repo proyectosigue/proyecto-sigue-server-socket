@@ -6,7 +6,7 @@ import {RegisterPage} from "../../../../register/register";
 @Component({
   template: `
     <ion-list>
-      <ion-list-header>Ionic</ion-list-header>
+      <ion-list-header>Acciones</ion-list-header>
       <button ion-item (click)="pushSignUp()">Registrar padrino</button>
     </ion-list>
   `

@@ -63,6 +63,7 @@ export class Singleton {
   }
 
   delete(url, auth = true) {
+    console.log(this.API + url);
     if (auth) {
       return this.http.delete(this.API + url, this.authHeaders);
     }
