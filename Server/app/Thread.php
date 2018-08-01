@@ -18,7 +18,7 @@ class Thread extends Model
     }
 
     public function receiver(){
-        return $this->belongsTo(User::class, 'receiver_id');
+        return $this->belongsTo(User::class, 'user_id_receiver');
     }
 
     public function messages(){

@@ -53,6 +53,10 @@ export class GodfatherTopicsListPage {
       console.log('CREAR');
       console.log(godfather);
       console.log(subject);
+      let data = {'subject': subject};
+      this.threadProvider.storeUserThead(godfather.id, data).subscribe( (data: any) => {
+        console.log(data);
+      });
     });
   }
 

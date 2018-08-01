@@ -5,24 +5,26 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Thread;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ThreadController extends Controller
 {
 
-    public function store(Request $request, User $issuing_user, User $receiver_user)
+    public function store(Request $request, $receiver_user)
     {
         try {
 
+            // Por que no User $receiver_user
             $thread = new Thread();
             $thread->subject = $request->subject;
-            $thread->issuing()->associate($issuing_user);
+            $thread->issuing()->associate(Auth::user()->id);
             $thread->receiver()->associate($receiver_user);
             $thread->save();
 
         } catch (\Exception $e) {
             return response()->json(['header' => 'Error', 'status' => 'error', 'messages' =>
-                ['Ocurrió un error en el registro'],
-                ['debug' => $e->getMessage() . ' on line ' . $e->getLine()]]);
+                ['Ocurrió un error'],
+                ['debug' => $e->getMessage() . ' on line ' . $e->getLine() . ' file ' . $e->getFile()   ]]);
         }
 
         return response()->json([

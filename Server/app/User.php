@@ -46,14 +46,14 @@ class User extends Authenticatable
         })->where('status', 1)->orderBy('id', 'asc');
     }
 
-    public function getFullNameAttribute()
+    public function getFullNameAttribute($value)
     {
-        return $this->first_name . ' ' . $this->last_name;
+        return $this->first_name . " " . $this->last_name;
     }
 
-    public function getProfileImageAttribute()
+    public function getProfileImageAttribute($value)
     {
-        return asset("storage/" . $this->attributes['profile_image']);
+        return asset("storage/" . $value);
     }
 
 }

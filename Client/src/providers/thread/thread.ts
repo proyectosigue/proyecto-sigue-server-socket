@@ -5,11 +5,17 @@ import {Singleton} from "../singleton/singleton";
 
 @Injectable()
 export class ThreadProvider {
-  DELETE_ALL_USER_THREADS: string;
-  GET_ALL_USER_THREADS: string;
+  private DELETE_ALL_USER_THREADS: string;
+  private GET_ALL_USER_THREADS: string;
+  private STORE_USER_THREAD: string;
 
   constructor(public http: HttpClient, private nativeStorage: NativeStorage, private singletonService: Singleton) {
     console.log('Hello GodfatherProvider Provider');
+  }
+
+  storeUserThead(receiverId: number, data: any){
+    this.STORE_USER_THREAD = "threads/messages/" + receiverId;
+    return this.singletonService.post(this.STORE_USER_THREAD, data);
   }
 
   getAllUserThreads(id: number){
