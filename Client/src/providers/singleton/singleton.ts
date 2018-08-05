@@ -42,32 +42,20 @@ export class Singleton {
   }
 
   post(url, data, auth = true) {
-    if (auth) {
-      return this.http.post(this.API + url, data, this.authHeaders);
-    }
-    return this.http.post(this.API + url, data, this.guestHeaders);
+    return this.http.post(this.API + url, data, (auth) ? this.authHeaders : this.guestHeaders);
   }
 
   get(url, auth = true) {
-    if (auth) {
-      return this.http.get(this.API + url, this.authHeaders);
-    }
-    return this.http.get(this.API + url, this.guestHeaders);
+    return this.http.get(this.API + url, (auth) ? this.authHeaders : this.guestHeaders);
   }
 
   put(url, data, auth = true) {
-    if (auth) {
-      return this.http.put(this.API + url, data, this.authHeaders);
-    }
-    return this.http.put(this.API + url, data, this.guestHeaders);
+    return this.http.put(this.API + url, data, (auth) ? this.authHeaders : this.guestHeaders);
   }
 
   delete(url, auth = true) {
     console.log(this.API + url);
-    if (auth) {
-      return this.http.delete(this.API + url, this.authHeaders);
-    }
-    return this.http.delete(this.API + url, this.guestHeaders);
+    return this.http.delete(this.API + url, (auth) ? this.authHeaders : this.guestHeaders);
   }
 
   get navCtrl(): NavController {
