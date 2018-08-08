@@ -36,6 +36,19 @@ export class LoginPage {
     });
   }
 
+  adminDebugSignIn(){
+    let self = this;
+    this.userProvider.validateUser("coordinacion@proyectosigue.com.mx", "123456").subscribe((res: any) => {
+      if (res["status"] == "Error") {
+        self.presentResponse(res);
+      }
+      else {
+        self.nativeStorage.setItem("session", res);
+        self.navCtrl.setRoot(TabsPage, res);
+      }
+    });
+  }
+
   presentResponse(response) {
     let alert = this.alertCtrl.create({
       title: response["status"],

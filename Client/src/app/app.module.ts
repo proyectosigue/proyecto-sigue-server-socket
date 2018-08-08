@@ -18,8 +18,9 @@ import { GodfathersPage} from "../pages/home-admin/godfathers/list/godfathers-li
 import { GodfathersPopoverPage } from "../pages/home-admin/godfathers/list/godfathers-popover/godfathers-popover";
 import { GodfathersDetailPage } from "../pages/home-admin/godfathers/detail/godfathers-detail";
 import { GodfathersDetailPopoverPage } from "../pages/home-admin/godfathers/detail/popover/godfathers-detail-popover";
-import { GodfatherTopicsListPage } from "../pages/home-admin/godfathers/topics-list/godfather-topics-list";
-import { GodfatherTopicsListPopoverPage } from "../pages/home-admin/godfathers/topics-list/popover/godfather-topics-list-popover";
+import { GodfatherTopicsListPage } from "../pages/home-admin/godfathers/topics/list/godfather-topics-list";
+import { GodfatherTopicsListPopoverPage } from "../pages/home-admin/godfathers/topics/list/popover/godfather-topics-list-popover";
+import { GodfatherTopicDetailPage } from "../pages/home-admin/godfathers/topics/detail/godfather-topic-detail";
 import { GodsonsPage } from "../pages/home-admin/godsons/list/godsons-list";
 import { GodsonsPopoverPage } from "../pages/home-admin/godsons/list/popover/godsons-popover";
 import { GodsonsDetailPage } from "../pages/home-admin/godsons/detail/godsons-detail";
@@ -49,6 +50,7 @@ import { ThreadProvider } from '../providers/thread/thread';
     GodfathersPopoverPage,
     GodfatherTopicsListPage,
     GodfatherTopicsListPopoverPage,
+    GodfatherTopicDetailPage,
     GodsonsPage,
     GodsonsPopoverPage,
     GodsonsDetailPage,
@@ -75,6 +77,7 @@ import { ThreadProvider } from '../providers/thread/thread';
     GodfathersDetailPopoverPage,
     GodfatherTopicsListPage,
     GodfatherTopicsListPopoverPage,
+    GodfatherTopicDetailPage,
     GodfathersPopoverPage,
     GodsonsPage,
     GodsonsPopoverPage,

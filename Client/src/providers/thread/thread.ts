@@ -8,6 +8,7 @@ export class ThreadProvider {
   private DELETE_ALL_USER_THREADS: string;
   private GET_ALL_USER_THREADS: string;
   private STORE_USER_THREAD: string;
+  private STORE_THREAD_MESSAGE : string;
 
   constructor(public http: HttpClient, private nativeStorage: NativeStorage, private singletonService: Singleton) {
     console.log('Hello GodfatherProvider Provider');
@@ -26,6 +27,11 @@ export class ThreadProvider {
   deleteAllUserThreads(id: number){
     this.DELETE_ALL_USER_THREADS = "threads/" + id + "/delete-all";
     return this.singletonService.delete(this.DELETE_ALL_USER_THREADS);
+  }
+
+  storeThreadMessage(receiverId: number, threadId: number, data: object){
+    this.STORE_THREAD_MESSAGE = "message/" + threadId + "/user/" + receiverId;
+    return this.singletonService.post(this.STORE_THREAD_MESSAGE, data);
   }
 
 }

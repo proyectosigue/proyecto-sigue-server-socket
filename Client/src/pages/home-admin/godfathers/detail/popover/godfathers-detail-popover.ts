@@ -6,7 +6,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   template: `
     <ion-list>
       <ion-list-header>Navegar</ion-list-header>
-      <button ion-item (click)="pushGodfatherGodsonsListPage()">Ver ahijados</button>
+      <button ion-item>Ver temas</button>
     </ion-list>
   `
 })
@@ -17,10 +17,6 @@ export class GodfathersDetailPopoverPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad GodfathersDetailPopoverPage');
-  }
-
-  pushGodfatherGodsonsListPage(){
-    console.log('pushGodfatherGodsonsListPage');
   }
 
 }

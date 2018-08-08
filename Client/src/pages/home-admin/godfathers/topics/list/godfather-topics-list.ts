@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import {Events, IonicPage, NavController, NavParams, PopoverController} from 'ionic-angular';
 import { GodfatherTopicsListPopoverPage } from "./popover/godfather-topics-list-popover";
-import {GodfatherProvider} from "../../../../providers/godfather/godfather";
-import {ThreadProvider} from "../../../../providers/thread/thread";
+import {GodfatherProvider} from "../../../../../providers/godfather/godfather";
+import {ThreadProvider} from "../../../../../providers/thread/thread";
+import {GodfatherTopicDetailPage} from "../detail/godfather-topic-detail";
 
 /**
  * Generated class for the GodfatherTopicPage page.
@@ -50,12 +51,12 @@ export class GodfatherTopicsListPage {
 
   subscribeCreateEvent(){
     this.events.subscribe('threads:create', (godfather, subject) => {
-      console.log('CREAR');
-      console.log(godfather);
-      console.log(subject);
-      let data = {'subject': subject};
-      this.threadProvider.storeUserThead(godfather.id, data).subscribe( (data: any) => {
-        console.log(data);
+
+      let params = {'subject': subject, 'godfather': this.godfather, 'godfather_id': this.godfather.id};
+      this.threadProvider.storeUserThead(godfather.id, params).subscribe( (data: any) => {
+
+        this.navCtrl.push(GodfatherTopicDetailPage, params);
+
       });
     });
   }

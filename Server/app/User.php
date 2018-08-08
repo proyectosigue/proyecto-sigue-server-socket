@@ -14,7 +14,7 @@ class User extends Authenticatable
     ];
 
     protected $appends = [
-        'full_name', 'profile_image'
+        'full_name'
     ];
 
     protected $hidden = ['remember_token'];
@@ -48,12 +48,12 @@ class User extends Authenticatable
 
     public function getFullNameAttribute($value)
     {
-        return $this->first_name . " " . $this->last_name;
+        return "{$this->first_name} {$this->last_name}";
     }
 
     public function getProfileImageAttribute($value)
     {
-        return asset("storage/" . $value);
+        return asset("storage")."/$value";
     }
 
 }

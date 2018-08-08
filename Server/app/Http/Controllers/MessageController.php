@@ -25,7 +25,7 @@ class MessageController extends Controller
                 'messages' => ['Mensaje guardado'],
             ]);
 
-        }catch(\Exception $e){
+        } catch(\Exception $e){
             return response()->json(['header' => 'Error', 'status' => 'error', 'messages' =>
                 ['Ocurrió un error en el registro'],
                 ['debug' => $e->getMessage() . ' on line ' . $e->getLine()]]);
