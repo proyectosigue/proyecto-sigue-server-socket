@@ -37,7 +37,7 @@ export class Singleton {
             'Authorization': 'Bearer ' + res.token
           })
         };
-      });
+      }).catch(e => console.log(e));
     });
   }
 

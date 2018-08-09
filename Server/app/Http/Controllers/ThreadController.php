@@ -5,33 +5,43 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Thread;
 use Illuminate\Http\Request;
+use App\Http\Traits\APIResponse;
 use Illuminate\Support\Facades\Auth;
 
 class ThreadController extends Controller
 {
 
+    public function show(Thread $thread){
+        return response()->json($thread->messages->toArray());
+    }
+
+    // TODO Se debería de poder inyectar User $receiver_user pero lo recibe como nulo
     public function store(Request $request, $receiver_user)
     {
         try {
 
-            // Por que no User $receiver_user
             $thread = new Thread();
             $thread->subject = $request->subject;
             $thread->issuing()->associate(Auth::user()->id);
             $thread->receiver()->associate($receiver_user);
             $thread->save();
 
+            $api_response = APIResponse::success('Se ha creado el tema');
+
+            $api_response['thread'] = $thread;
+            return response()->json($api_response);
+
         } catch (\Exception $e) {
-            return response()->json(['header' => 'Error', 'status' => 'error', 'messages' =>
-                ['Ocurrió un error'],
-                ['debug' => $e->getMessage() . ' on line ' . $e->getLine() . ' file ' . $e->getFile()   ]]);
+
+            $errors = ['Ocurrió un error'];
+            $debug_message = $e->getMessage() . ' on line ' . $e->getLine() .
+                ' file ' . $e->getFile();
+
+            $api_response = APIResponse::error($errors, $debug_message);
+
+            return response()->json($api_response);
         }
 
-        return response()->json([
-            'header' => 'Éxito',
-            'status' => 'success',
-            'messages' => ['Se ha creado el tema'],
-        ]);
     }
 
     public function update(Request $request, Thread $thread)
@@ -100,7 +110,9 @@ class ThreadController extends Controller
     {
         $threads = Thread::active()->where(function ($q) use ($user) {
             return $q->where('user_id_issuing', $user->id)->orWhere('user_id_receiver', $user->id);
-        })->with('messages')->get();
+        })->with(['messages' => function($q){
+            return $q->orderBy('id', 'desc')->first();
+        }])->get();
 
         return response()->json($threads);
     }

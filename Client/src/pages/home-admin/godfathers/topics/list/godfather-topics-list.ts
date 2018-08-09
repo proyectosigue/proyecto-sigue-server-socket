@@ -4,13 +4,8 @@ import { GodfatherTopicsListPopoverPage } from "./popover/godfather-topics-list-
 import {GodfatherProvider} from "../../../../../providers/godfather/godfather";
 import {ThreadProvider} from "../../../../../providers/thread/thread";
 import {GodfatherTopicDetailPage} from "../detail/godfather-topic-detail";
-
-/**
- * Generated class for the GodfatherTopicPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import {Message} from "../../../../../models/message";
+import {Thread} from "../../../../../models/thread";
 
 @IonicPage()
 @Component({
@@ -20,11 +15,15 @@ import {GodfatherTopicDetailPage} from "../detail/godfather-topic-detail";
 export class GodfatherTopicsListPage {
 
   godfather: any;
-  threads: any;
+  threads: Thread[];
+
+  godfatherTopicDetailPage: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public popoverCtrl: PopoverController,
               private threadProvider: ThreadProvider, public events: Events) {
+    this.threads = [];
     this.godfather = this.navParams.data;
+    this.godfatherTopicDetailPage = GodfatherTopicDetailPage;
   }
 
   ionViewDidLoad() {
@@ -44,18 +43,20 @@ export class GodfatherTopicsListPage {
   }
 
   fillAllUserThreads() {
-    this.threadProvider.getAllUserThreads(this.godfather.id).subscribe((data: any) => {
-      this.threads = data;
+    this.threadProvider.getAllUserThreads(this.godfather.id).subscribe((data: any) => {;
+      this.threads.push(data);
     });
   }
 
   subscribeCreateEvent(){
+
     this.events.subscribe('threads:create', (godfather, subject) => {
 
-      let params = {'subject': subject, 'godfather': this.godfather, 'godfather_id': this.godfather.id};
-      this.threadProvider.storeUserThead(godfather.id, params).subscribe( (data: any) => {
+      let requestParams = {'subject': subject };
+      this.threadProvider.storeUserThead(godfather.id, requestParams).subscribe( (data: any) => {
 
-        this.navCtrl.push(GodfatherTopicDetailPage, params);
+        let pushParams = { thread: data.thread, subject: subject, godfather: godfather };
+        this.navCtrl.push(GodfatherTopicDetailPage, pushParams);
 
       });
     });

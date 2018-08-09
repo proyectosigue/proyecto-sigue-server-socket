@@ -6,6 +6,7 @@ use App\User;
 use App\Thread;
 use App\Message;
 use Illuminate\Http\Request;
+use App\Http\Traits\APIResponse;
 
 class MessageController extends Controller
 {
@@ -19,16 +20,14 @@ class MessageController extends Controller
             $message->replier()->associate($user);
             $message->save();
 
-            return response()->json([
-                'header' => 'Éxito',
-                'status' => 'success',
-                'messages' => ['Mensaje guardado'],
-            ]);
+            return response()->json(APIResponse::success('Mensaje enviado'));
 
         } catch(\Exception $e){
-            return response()->json(['header' => 'Error', 'status' => 'error', 'messages' =>
-                ['Ocurrió un error en el registro'],
-                ['debug' => $e->getMessage() . ' on line ' . $e->getLine()]]);
+
+            $errors = ['Ocurrió un error en el registro'];
+            $debug_message = $e->getMessage() . ' on line ' . $e->getLine();
+
+            return response()->json(APIResponse::error($errors, $debug_message));
         }
     }
 

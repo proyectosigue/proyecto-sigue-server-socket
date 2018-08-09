@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {NativeStorage} from "@ionic-native/native-storage";
 import {Singleton} from "../singleton/singleton";
+import {Observable} from "rxjs";
 
 @Injectable()
 export class ThreadProvider {
@@ -9,6 +10,7 @@ export class ThreadProvider {
   private GET_ALL_USER_THREADS: string;
   private STORE_USER_THREAD: string;
   private STORE_THREAD_MESSAGE : string;
+  private GET_THREAD_MESSAGES : string;
 
   constructor(public http: HttpClient, private nativeStorage: NativeStorage, private singletonService: Singleton) {
     console.log('Hello GodfatherProvider Provider');
@@ -32,6 +34,11 @@ export class ThreadProvider {
   storeThreadMessage(receiverId: number, threadId: number, data: object){
     this.STORE_THREAD_MESSAGE = "message/" + threadId + "/user/" + receiverId;
     return this.singletonService.post(this.STORE_THREAD_MESSAGE, data);
+  }
+
+  getThreadMessages(threadId: number): Observable<any>{
+    this.GET_THREAD_MESSAGES = "threads/" + threadId + "/messages";
+    return this.singletonService.get(this.GET_THREAD_MESSAGES);
   }
 
 }

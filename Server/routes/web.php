@@ -35,6 +35,7 @@ Route::middleware(["jwt.auth"])->group(function () {
     Route::resource('godsons', 'GodsonController');
 
     Route::get('threads/{user}', 'ThreadController@userThreads');
+    Route::get('threads/{thread}/messages', 'ThreadController@show');
     Route::post('threads/messages/{user}', 'ThreadController@store');
     Route::put('threads/{thread}/update', 'ThreadController@update');
     Route::delete('threads/{thread}/delete-single', 'ThreadController@destroy');

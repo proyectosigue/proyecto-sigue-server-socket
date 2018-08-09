@@ -1,7 +1,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>{{ conversation.subject }}</ion-title>
+    <ion-title>{{ thread.subject }}</ion-title>
     <ion-buttons end>
       <button ion-button icon-only (click)="presentPopover($event)">
         <ion-icon name="more"></ion-icon>
@@ -11,23 +11,36 @@
 
 </ion-header>
 
-
 <ion-content padding>
 
-  <ion-footer>
+  <ion-list>
     <ion-grid>
-      <ion-row>
-        <ion-col col-11>
-          <ion-item>
-            <ion-textarea maxlength="200" [(ngModel)]="conversation.message" [ngModelOptions]="{standalone: true}"
-                          placeholder="Escribe un mensaje"></ion-textarea>
-          </ion-item>
-        </ion-col>
-        <ion-col col-auto>
-          <button ion-button color="secondary" (click)="sendMessage()"><ion-icon name="send"></ion-icon></button>
-        </ion-col>
+      <ion-row *ngFor="let message of thread.messages">
+          <ion-card>
+            <ion-card-content padding ion-col col-9 end>
+              {{ message.body }}
+            </ion-card-content>
+          </ion-card>
       </ion-row>
     </ion-grid>
-  </ion-footer>
+  </ion-list>
 
 </ion-content>
+
+<ion-footer>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-11>
+        <ion-item>
+          <ion-textarea maxlength="200" [(ngModel)]="bodyMessage" [ngModelOptions]="{standalone: true}"
+                        placeholder="Escribe un mensaje"></ion-textarea>
+        </ion-item>
+      </ion-col>
+      <ion-col col-auto>
+        <button ion-button color="secondary" (click)="sendMessage()">
+          <ion-icon name="send"></ion-icon>
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-footer>
