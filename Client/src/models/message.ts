@@ -5,7 +5,8 @@ export interface IMessage {
   user_id_replier: number,
   status: boolean,
   created_at: Date,
-  updated_at: Date
+  updated_at: Date,
+  deserialize(object:  IMessage);
 }
 
 export class Message {

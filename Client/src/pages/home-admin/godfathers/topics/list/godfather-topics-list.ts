@@ -1,11 +1,9 @@
 import { Component } from '@angular/core';
 import {Events, IonicPage, NavController, NavParams, PopoverController} from 'ionic-angular';
 import { GodfatherTopicsListPopoverPage } from "./popover/godfather-topics-list-popover";
-import {GodfatherProvider} from "../../../../../providers/godfather/godfather";
 import {ThreadProvider} from "../../../../../providers/thread/thread";
 import {GodfatherTopicDetailPage} from "../detail/godfather-topic-detail";
-import {Message} from "../../../../../models/message";
-import {Thread} from "../../../../../models/thread";
+import {IThread, Thread} from "../../../../../models/thread";
 
 @IonicPage()
 @Component({
@@ -43,8 +41,9 @@ export class GodfatherTopicsListPage {
   }
 
   fillAllUserThreads() {
-    this.threadProvider.getAllUserThreads(this.godfather.id).subscribe((data: any) => {;
-      this.threads.push(data);
+    this.threadProvider.getAllUserThreads(this.godfather.id).subscribe((data: IThread[]) => {;
+      for(let thread of data)
+        this.threads.push(new Thread().deserialize(thread));
     });
   }
 

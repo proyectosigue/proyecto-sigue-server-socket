@@ -4,6 +4,7 @@ import {GodfathersPopoverPage} from "./godfathers-popover/godfathers-popover";
 import {GodfathersDetailPage} from "../detail/godfathers-detail";
 import {GodfatherProvider} from "../../../../providers/godfather/godfather";
 import {GodfatherTopicsListPage} from "../topics/list/godfather-topics-list";
+import {Godfather, IGodfather} from "../../../../models/godfather";
 
 @IonicPage()
 @Component({
@@ -12,9 +13,10 @@ import {GodfatherTopicsListPage} from "../topics/list/godfather-topics-list";
 })
 export class GodfathersPage {
 
-  godfathers: any;
   godfathersDetailPage: any;
   godfatherTopicsListPage: any;
+
+  godfathers: Godfather[] = [];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public popoverCtrl: PopoverController,
               private godfatherProvider: GodfatherProvider) {
@@ -28,9 +30,8 @@ export class GodfathersPage {
   }
 
   fillGodfathers(){
-    this.godfatherProvider.getGodfathers().subscribe((data: any) => {
+    this.godfatherProvider.getGodfathers().subscribe((data: IGodfather[]) => {
       this.godfathers = data;
-      console.log(this.godfathers);
     });
   }
 

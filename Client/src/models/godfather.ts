@@ -1,6 +1,5 @@
 
-interface IGodfather {
-
+export interface IGodfather {
   id: number;
   first_name: string;
   last_name: string;
@@ -8,7 +7,7 @@ interface IGodfather {
   email: string;
   interests: string;
   profile_image: string;
-
+  deserialize(object: IGodfather);
 }
 
 export class Godfather {
@@ -21,13 +20,9 @@ export class Godfather {
   interests: string;
   profile_image: string;
 
-  constructor(data?: IGodfather) {
-    this.id = data.id;
-    this.first_name = data.first_name;
-    this.last_name = data.full_name;
-    this.email = data.email;
-    this.interests = data.interests;
-    this.profile_image = data.profile_image;
+  deserialize(object : IGodfather){
+    Object.assign(this, object);
+    return this;
   }
 
 }

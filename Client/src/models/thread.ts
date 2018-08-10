@@ -1,4 +1,4 @@
-import {Message} from "./message";
+import { Message } from "./message";
 
 export interface IThread {
   id: number;
@@ -6,8 +6,8 @@ export interface IThread {
   user_id_issuing: number;
   user_id_receiver: number;
   status: boolean;
-
   messages: Message[];
+  deserialize(object: IThread);
 }
 
 export class Thread {
@@ -20,12 +20,9 @@ export class Thread {
 
   messages: Message[] = [];
 
-  constructor(data: IThread){
-    this.id = data.id? data.id : null;
-    this.subject = data.subject;
-    this.user_id_receiver = data.user_id_receiver;
-    this.user_id_issuing = data.user_id_issuing;
-    this.messages = data.messages;
+  deserialize(object : IThread){
+    Object.assign(this, object);
+    return this;
   }
 
 }
