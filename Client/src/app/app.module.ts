@@ -31,7 +31,7 @@ import {Camera} from "@ionic-native/camera";
 import { GodfatherProvider } from '../providers/godfather/godfather';
 import { Singleton } from '../providers/singleton/singleton';
 import { TruncateModule } from "ng2-truncate";
-import {LastElementPipe} from "../pipes/last-element/last-element";
+import { LastPipe } from "../pipes/last/last";
 import { ThreadProvider } from '../providers/thread/thread';
 
 
@@ -54,7 +54,7 @@ import { ThreadProvider } from '../providers/thread/thread';
     GodsonsPage,
     GodsonsPopoverPage,
     GodsonsDetailPage,
-    LastElementPipe,
+    LastPipe,
   ],
   imports: [
     BrowserModule,

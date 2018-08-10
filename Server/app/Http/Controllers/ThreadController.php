@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\Thread;
+use App\Message;
 use Illuminate\Http\Request;
 use App\Http\Traits\APIResponse;
 use Illuminate\Support\Facades\Auth;
@@ -11,8 +12,18 @@ use Illuminate\Support\Facades\Auth;
 class ThreadController extends Controller
 {
 
-    public function show(Thread $thread){
-        return response()->json($thread->messages->toArray());
+    public function show(Thread $thread, $last_message = null){
+
+        if(isset($last_message)) {
+
+            return response()->json(
+                Message::whereThreadId($thread->id)->where('id', '>', $last_message)->get()
+            );
+
+        }
+        else {
+            return response()->json($thread->messages);
+        }
     }
 
     // TODO Se debería de poder inyectar User $receiver_user pero lo recibe como nulo

@@ -21,7 +21,7 @@
 
       <ion-item [navPush]="godfatherTopicDetailPage" [navParams]="{ 'thread': thread, 'godfather': godfather }">
         <h2>{{ thread.subject }}</h2>
-        <p *ngFor="let message of thread.messages">{{ message.body | truncate: 30 : "..." | lastElement:true }}</p>
+        <p *ngFor="let message of thread.messages | last">{{ message.body | truncate: 30 : "..." }}</p>
       </ion-item>
       <ion-item-options side="right">
         <button ion-button color="primary">

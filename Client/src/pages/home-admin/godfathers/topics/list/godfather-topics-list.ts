@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {Events, IonicPage, NavController, NavParams, PopoverController} from 'ionic-angular';
-import { GodfatherTopicsListPopoverPage } from "./popover/godfather-topics-list-popover";
+import {GodfatherTopicsListPopoverPage} from "./popover/godfather-topics-list-popover";
 import {ThreadProvider} from "../../../../../providers/thread/thread";
 import {GodfatherTopicDetailPage} from "../detail/godfather-topic-detail";
-import {IThread, Thread} from "../../../../../models/thread";
+import {Thread} from "../../../../../models/thread";
 
 @IonicPage()
 @Component({
@@ -27,9 +27,6 @@ export class GodfatherTopicsListPage {
   ionViewDidLoad() {
     this.subscribeCreateEvent();
     this.subscribeDeleteAllEvent();
-  }
-
-  ionViewWillEnter(){
     this.fillAllUserThreads();
   }
 
@@ -41,27 +38,33 @@ export class GodfatherTopicsListPage {
   }
 
   fillAllUserThreads() {
-    this.threadProvider.getAllUserThreads(this.godfather.id).subscribe((data: IThread[]) => {;
-      for(let thread of data)
-        this.threads.push(new Thread().deserialize(thread));
+    this.threadProvider.getAllUserThreads(this.godfather.id).subscribe((data: Thread[]) => {
+      for (let thread of data) {
+        if (this.newerThread(thread.id))
+          this.threads.push(new Thread().deserialize(thread));
+      }
+      console.log(this.threads);
     });
   }
 
-  subscribeCreateEvent(){
+  newerThread(id: number){
+    return this.threads.length == 0  || this.threads[this.threads.length - 1].id < id;
+  }
 
+  subscribeCreateEvent() {
     this.events.subscribe('threads:create', (godfather, subject) => {
 
-      let requestParams = {'subject': subject };
-      this.threadProvider.storeUserThead(godfather.id, requestParams).subscribe( (data: any) => {
+      let requestParams = {'subject': subject};
+      this.threadProvider.storeUserThead(godfather.id, requestParams).subscribe((data: any) => {
 
-        let pushParams = { thread: data.thread, subject: subject, godfather: godfather };
+        let pushParams = {thread: data.thread, subject: subject, godfather: godfather};
         this.navCtrl.push(GodfatherTopicDetailPage, pushParams);
 
       });
     });
   }
 
-  subscribeDeleteAllEvent(){
+  subscribeDeleteAllEvent() {
     this.events.subscribe('threads:delete-all', (godfather) => {
       this.threadProvider.deleteAllUserThreads(godfather.id).subscribe((data: any) => {
         this.fillAllUserThreads();

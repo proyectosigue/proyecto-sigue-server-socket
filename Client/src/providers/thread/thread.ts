@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import {NativeStorage} from "@ionic-native/native-storage";
 import {Singleton} from "../singleton/singleton";
 import {Observable} from "rxjs";
+import {Thread} from "../../models/thread";
 
 @Injectable()
 export class ThreadProvider {
@@ -36,8 +37,8 @@ export class ThreadProvider {
     return this.singletonService.post(this.STORE_THREAD_MESSAGE, data);
   }
 
-  getThreadMessages(threadId: number): Observable<any>{
-    this.GET_THREAD_MESSAGES = "threads/" + threadId + "/messages";
+  getThreadMessages(threadId: number, lastMessageId?: Number) {
+    this.GET_THREAD_MESSAGES = lastMessageId ? ("threads/" + threadId + "/messages/" + lastMessageId) : ("threads/" + threadId + "/messages");
     return this.singletonService.get(this.GET_THREAD_MESSAGES);
   }
 

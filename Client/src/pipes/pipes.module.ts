@@ -1,12 +1,8 @@
 import { NgModule } from '@angular/core';
-import { LastElementPipe } from './last-element/last-element';
+import { LastPipe  } from './last/last';
 @NgModule({
-	declarations: [
-    LastElementPipe
-  ],
+	declarations: [LastPipe],
 	imports: [],
-	exports: [
-    LastElementPipe
-  ]
+	exports: [LastPipe]
 })
 export class PipesModule {}
