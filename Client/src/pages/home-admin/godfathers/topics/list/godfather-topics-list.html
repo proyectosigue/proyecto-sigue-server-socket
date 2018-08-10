@@ -12,12 +12,12 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-item *ngIf="threads[0]?.length === 0">
+  <ion-item *ngIf="threads?.length === 0">
     <h2>No hay temas con éste padrino aún.</h2>
   </ion-item>
-  <ion-list *ngIf="threads[0]?.length > 0">
+  <ion-list *ngIf="threads?.length > 0">
 
-    <ion-item-sliding *ngFor="let thread of threads[0]">
+    <ion-item-sliding *ngFor="let thread of threads">
 
       <ion-item [navPush]="godfatherTopicDetailPage" [navParams]="{ 'thread': thread, 'godfather': godfather }">
         <h2>{{ thread.subject }}</h2>
