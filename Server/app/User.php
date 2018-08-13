@@ -14,7 +14,7 @@ class User extends Authenticatable
     ];
 
     protected $appends = [
-        'full_name'
+        'full_name', 'role_description'
     ];
 
     protected $hidden = ['remember_token'];
@@ -37,6 +37,11 @@ class User extends Authenticatable
     public function receiverThreads()
     {
         return $this->hasMany(Thread::class, 'user_id_receiver', 'id');
+    }
+
+
+    public function getRoleDescriptionAttribute(){
+        return $this->roles()->first()->description;
     }
 
     public function scopeGodfathers($query)

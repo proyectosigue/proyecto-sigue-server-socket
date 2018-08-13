@@ -26,29 +26,6 @@ export class GodfatherTopicDetailPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad GodfatherTopicDetailPage');
-  }
-
-  ionViewDidEnter(){
-    console.log('ionViewDidEnter GodfatherTopicDetailPage');
-    this.startMessageListening();
-  }
-
-  ionViewDidLeave(){
-    console.log('ionViewDidLeave GodfatherTopicDetailPage');
-    this.messagesSubscription.unsubscribe();
-  }
-
-  sendMessage() {
-    this.threadProvider.storeThreadMessage(
-      this.thread.user_id_issuing, this.thread.id, {'body': this.bodyMessage}
-    ).subscribe((response) => {
-      console.log(response);
-    });
-    this.bodyMessage = ""
-  }
-
-  startMessageListening() {
-
     this.messagesObserver = {
       next: (response: Message[]) => {
         for (let message of response) {
@@ -59,15 +36,36 @@ export class GodfatherTopicDetailPage {
       error: (err: any) => { console.log(err) },
       complete: () => {}
     };
+  }
 
+  ionViewDidEnter(){
+    console.log('ionViewDidEnter GodfatherTopicDetailPage');
+    if(this.messagesObserver !== undefined && this.messagesSubscription === undefined)
+      this.subscribeMessageListening();
+  }
+
+  ionViewDidLeave(){
+    console.log('ionViewDidLeave GodfatherTopicDetailPage');
+    this.messagesSubscription.unsubscribe();
+  }
+
+  subscribeMessageListening() {
     this.messagesSubscription = TimerObservable.create(0, 5000).subscribe(() => {
       this.threadProvider.getThreadMessages(this.thread.id, this.lastMessageId()).subscribe(this.messagesObserver);
     });
-
   }
 
   lastMessageId(): Number {
     return (this.thread.messages === undefined || this.thread.messages.length === 0) ? 0 : this.thread.messages[this.thread.messages.length - 1].id;
+  }
+
+  sendMessage() {
+    this.threadProvider.storeThreadMessage(
+      this.thread.user_id_issuing, this.thread.id, {'body': this.bodyMessage}
+    ).subscribe((response) => {
+      console.log(response);
+    });
+    this.bodyMessage = ""
   }
 
 }

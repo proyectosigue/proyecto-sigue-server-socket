@@ -1,9 +1,10 @@
 import {Component} from '@angular/core';
 import {IonicPage, NavController, NavParams, AlertController} from 'ionic-angular';
 import {RegisterPage} from "../register/register";
-import {TabsPage} from "../home-admin/tabs/tabs";
+import {AdminTabsPage} from "../home-admin/tabs/admin-tabs";
 import {UserProvider} from "../../providers/user/user";
 import {NativeStorage} from '@ionic-native/native-storage';
+import {GodfatherTabsPage} from "../home-godfather/tabs/godfather-tabs";
 
 @IonicPage()
 @Component({
@@ -32,7 +33,10 @@ export class LoginPage {
       }
       else {
         self.nativeStorage.setItem("session", res);
-        self.navCtrl.setRoot(TabsPage, res);
+        if(res.user.role_description === 'Administrador')
+            self.navCtrl.setRoot(AdminTabsPage, res);
+          else
+            self.navCtrl.setRoot(GodfatherTabsPage, res);
       }
     });
   }
@@ -45,7 +49,10 @@ export class LoginPage {
       }
       else {
         self.nativeStorage.setItem("session", res);
-        self.navCtrl.setRoot(TabsPage, res);
+        if(res.user.role_description === 'Administrador')
+          self.navCtrl.setRoot(AdminTabsPage, res);
+        else
+          self.navCtrl.setRoot(GodfatherTabsPage, res);
       }
     });
   }

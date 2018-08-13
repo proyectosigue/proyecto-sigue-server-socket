@@ -4,9 +4,9 @@ import { GodfathersPage } from '../godfathers/list/godfathers-list';
 import { GodsonsPage } from '../godsons/list/godsons-list';
 
 @Component({
-  templateUrl: 'tabs.html'
+  templateUrl: 'admin-tabs.html'
 })
-export class TabsPage {
+export class AdminTabsPage {
   tab1Root = AboutPage;
   tab2Root = GodfathersPage;
   tab3Root = GodsonsPage;

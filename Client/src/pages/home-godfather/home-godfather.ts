@@ -11,7 +11,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 @IonicPage()
 @Component({
   selector: 'page-home-user',
-  templateUrl: 'home-user.html',
+  templateUrl: 'home-godfather.html',
 })
 export class HomeUserPage {
 

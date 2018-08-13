@@ -12,8 +12,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { LoginPage } from "../pages/login/login";
 import { RegisterPage } from "../pages/register/register";
 import { HomeAdminPage } from '../pages/home-admin/home-admin'
-import { HomeUserPage } from '../pages/home-user/home-user'
-import { TabsPage } from '../pages/home-admin/tabs/tabs';
+import { HomeUserPage } from '../pages/home-godfather/home-godfather'
+import { AdminTabsPage } from '../pages/home-admin/tabs/admin-tabs';
 import { GodfathersPage} from "../pages/home-admin/godfathers/list/godfathers-list";
 import { GodfathersPopoverPage } from "../pages/home-admin/godfathers/list/godfathers-popover/godfathers-popover";
 import { GodfathersDetailPage } from "../pages/home-admin/godfathers/detail/godfathers-detail";
@@ -33,13 +33,14 @@ import { Singleton } from '../providers/singleton/singleton';
 import { TruncateModule } from "ng2-truncate";
 import { LastPipe } from "../pipes/last/last";
 import { ThreadProvider } from '../providers/thread/thread';
-
+import {GodfatherTabsPage} from "../pages/home-godfather/tabs/godfather-tabs";
+import {NewsPage} from "../pages/news/news";
 
 @NgModule({
   declarations: [
     MyApp,
     AboutPage,
-    TabsPage,
+    AdminTabsPage,
     LoginPage,
     RegisterPage,
     HomeAdminPage,
@@ -54,6 +55,8 @@ import { ThreadProvider } from '../providers/thread/thread';
     GodsonsPage,
     GodsonsPopoverPage,
     GodsonsDetailPage,
+    GodfatherTabsPage,
+    NewsPage,
     LastPipe,
   ],
   imports: [
@@ -67,7 +70,7 @@ import { ThreadProvider } from '../providers/thread/thread';
   entryComponents: [
     MyApp,
     AboutPage,
-    TabsPage,
+    AdminTabsPage,
     LoginPage,
     RegisterPage,
     HomeAdminPage,
@@ -82,6 +85,8 @@ import { ThreadProvider } from '../providers/thread/thread';
     GodsonsPage,
     GodsonsPopoverPage,
     GodsonsDetailPage,
+    GodfatherTabsPage,
+    NewsPage,
   ],
   providers: [
     StatusBar,
