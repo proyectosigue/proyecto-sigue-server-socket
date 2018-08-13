@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController } from 'ionic-angular';
+import {IonicPage, NavController, NavParams} from 'ionic-angular';
 import { NewsPage } from "../../news/news";
+import { GodfatherTopicsListPage } from "../../home-admin/godfathers/topics/list/godfather-topics-list";
+import {Godfather} from "../../../models/godfather";
 
 /**
  * Generated class for the GodfatherTabsPage tabs.
@@ -16,9 +18,12 @@ import { NewsPage } from "../../news/news";
 })
 export class GodfatherTabsPage {
 
+  godfather: Godfather;
   newsRoot = NewsPage;
-  topicsRoot = 'TopicsPage';
+  topicsRoot = GodfatherTopicsListPage;
 
-  constructor(public navCtrl: NavController) {}
+  constructor(public navCtrl: NavController, private navParams: NavParams) {
+    this.godfather = this.navParams.data;
+  }
 
 }

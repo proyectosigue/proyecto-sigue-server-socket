@@ -22,7 +22,7 @@ export class ThreadProvider {
     return this.singletonService.post(this.STORE_USER_THREAD, data);
   }
 
-  getAllUserThreads(id: number){
+  getAllUserThreads(id: number) {
     this.GET_ALL_USER_THREADS = "threads/" + id;
     return this.singletonService.get(this.GET_ALL_USER_THREADS);
   }

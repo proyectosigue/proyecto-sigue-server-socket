@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import {AlertController, App, Events, IonicPage, NavController, NavParams, ViewController} from 'ionic-angular';
 import {ThreadProvider} from "../../../../../../providers/thread/thread";
-import { GodfatherTopicDetailPage } from "../../detail/godfather-topic-detail";
 
 @IonicPage()
 @Component({

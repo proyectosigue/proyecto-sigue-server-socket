@@ -18,6 +18,7 @@
       <ion-row *ngFor="let message of thread.messages">
           <ion-card>
             <ion-card-content padding ion-col col-9 end>
+              <ion-label>{{ message.created_at }}</ion-label>
               {{ message.body }}
             </ion-card-content>
           </ion-card>

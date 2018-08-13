@@ -15,14 +15,12 @@ class ThreadController extends Controller
     public function show(Thread $thread, $last_message = null){
 
         if(isset($last_message)) {
-
             return response()->json(
-                Message::whereThreadId($thread->id)->where('id', '>', $last_message)->get()
-            );
-
+                Message::whereThreadId($thread->id)->where('id', '>', $last_message)->
+                with('replier')->get());
         }
         else {
-            return response()->json($thread->messages);
+            return response()->json($thread->messages()->with('replier')->get());
         }
     }
 
@@ -120,10 +118,11 @@ class ThreadController extends Controller
     public function userThreads(Request $request, User $user)
     {
         $threads = Thread::active()->where(function ($q) use ($user) {
-            return $q->where('user_id_issuing', $user->id)->orWhere('user_id_receiver', $user->id);
+            return $q->where('user_id_issuing', $user->id)
+                ->orWhere('user_id_receiver', $user->id);
         })->with(['messages' => function($q){
-            return $q->orderBy('id', 'desc')->first();
-        }])->get();
+            return $q->descendant()->first();
+        }])->descendant()->get();
 
         return response()->json($threads);
     }

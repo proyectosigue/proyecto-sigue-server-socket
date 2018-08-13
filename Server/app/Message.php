@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Message extends Model
@@ -10,7 +11,9 @@ class Message extends Model
         'body',
         'thread_id',
         'user_id_replier',
-        'status'
+        'status',
+        'created_at',
+        'updated_at'
     ];
 
     public function thread(){
@@ -27,6 +30,14 @@ class Message extends Model
 
     public function scopeInactive($query){
         return $query->where('status', 0);
+    }
+
+    public function scopeDescendant($query){
+        return $query->orderBy('id', 'desc');
+    }
+
+    public function getCreatedAtAttribute(){
+        return Carbon::parse($this->attributes['created_at'])->format('d/m H:i:s');
     }
 
 }

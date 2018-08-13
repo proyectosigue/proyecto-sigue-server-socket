@@ -33,4 +33,9 @@ class Thread extends Model
         return $query->where('status', 0);
     }
 
+    public function scopeDescendant($query){
+        return $query->orderBy('id', 'desc');
+    }
+
+
 }

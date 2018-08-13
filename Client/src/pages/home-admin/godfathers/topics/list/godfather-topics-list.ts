@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, NgZone} from '@angular/core';
 import {Events, IonicPage, NavController, NavParams, PopoverController} from 'ionic-angular';
 import {GodfatherTopicsListPopoverPage} from "./popover/godfather-topics-list-popover";
 import {ThreadProvider} from "../../../../../providers/thread/thread";
@@ -18,7 +18,7 @@ export class GodfatherTopicsListPage {
   godfatherTopicDetailPage: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public popoverCtrl: PopoverController,
-              private threadProvider: ThreadProvider, public events: Events) {
+              private threadProvider: ThreadProvider, public events: Events, public zone: NgZone) {
     this.threads = [];
     this.godfather = this.navParams.data;
     this.godfatherTopicDetailPage = GodfatherTopicDetailPage;
@@ -39,16 +39,12 @@ export class GodfatherTopicsListPage {
 
   fillAllUserThreads() {
     this.threadProvider.getAllUserThreads(this.godfather.id).subscribe((data: Thread[]) => {
+      this.zone.run(() => {
       for (let thread of data) {
-        if (this.newerThread(thread.id))
-          this.threads.push(new Thread().deserialize(thread));
-      }
+        this.threads.push(new Thread().deserialize(thread));
+      }});
       console.log(this.threads);
     });
-  }
-
-  newerThread(id: number){
-    return this.threads.length == 0  || this.threads[this.threads.length - 1].id < id;
   }
 
   subscribeCreateEvent() {
@@ -56,6 +52,10 @@ export class GodfatherTopicsListPage {
 
       let requestParams = {'subject': subject};
       this.threadProvider.storeUserThead(godfather.id, requestParams).subscribe((data: any) => {
+
+        this.zone.run(() => {
+          this.threads.splice(0, 0, new Thread().deserialize(data.thread));
+        });
 
         let pushParams = {thread: data.thread, subject: subject, godfather: godfather};
         this.navCtrl.push(GodfatherTopicDetailPage, pushParams);
@@ -67,7 +67,7 @@ export class GodfatherTopicsListPage {
   subscribeDeleteAllEvent() {
     this.events.subscribe('threads:delete-all', (godfather) => {
       this.threadProvider.deleteAllUserThreads(godfather.id).subscribe((data: any) => {
-        this.fillAllUserThreads();
+        this.threads = [];
       });
     });
   }

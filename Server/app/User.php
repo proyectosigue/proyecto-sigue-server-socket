@@ -39,16 +39,15 @@ class User extends Authenticatable
         return $this->hasMany(Thread::class, 'user_id_receiver', 'id');
     }
 
-
-    public function getRoleDescriptionAttribute(){
-        return $this->roles()->first()->description;
-    }
-
     public function scopeGodfathers($query)
     {
         return $query->whereHas('roles', function ($q) {
             return $q->where('description', 'Padrino');
         })->where('status', 1)->orderBy('id', 'asc');
+    }
+
+    public function getRoleDescriptionAttribute(){
+        return $this->roles()->first()->description;
     }
 
     public function getFullNameAttribute($value)

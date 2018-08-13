@@ -34,9 +34,9 @@ export class LoginPage {
       else {
         self.nativeStorage.setItem("session", res);
         if(res.user.role_description === 'Administrador')
-            self.navCtrl.setRoot(AdminTabsPage, res);
-          else
-            self.navCtrl.setRoot(GodfatherTabsPage, res);
+          self.navCtrl.setRoot(AdminTabsPage, res);
+        else
+          self.navCtrl.setRoot(GodfatherTabsPage, res.user);
       }
     });
   }

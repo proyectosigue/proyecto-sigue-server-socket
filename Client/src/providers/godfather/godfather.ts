@@ -2,6 +2,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { NativeStorage } from "@ionic-native/native-storage";
 import { Singleton } from "../singleton/singleton";
+import {Platform} from "ionic-angular";
 
 @Injectable()
 export class GodfatherProvider {
@@ -9,7 +10,8 @@ export class GodfatherProvider {
   GET_GODFATHERS: string;
   UPLOAD_PROFILE_IMAGE: string;
 
-  constructor(public http: HttpClient, private nativeStorage: NativeStorage, private singletonService: Singleton) {
+  constructor(public http: HttpClient, private nativeStorage: NativeStorage, private singletonService: Singleton,
+              private platform: Platform) {
     console.log('Hello GodfatherProvider Provider');
     this.GET_GODFATHERS = "godfathers";
   }
