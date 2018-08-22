@@ -19,8 +19,7 @@ class AuthenticateController extends Controller
         catch(JWTException $e){
             return response()->json(["status" => "Error", "message" => "No se pudo obtener el token"]);
         }
-
-        $user = Auth::user();
+        
         $response = compact(['token']);
         $response['user'] = Auth::user();
 
