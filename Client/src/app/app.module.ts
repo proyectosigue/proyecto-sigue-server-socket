@@ -26,6 +26,7 @@ import { GodsonsPage } from "../pages/home-admin/godsons/list/godsons-list";
 import { GodsonsPopoverPage } from "../pages/home-admin/godsons/list/popover/godsons-popover";
 import { GodsonsDetailPage } from "../pages/home-admin/godsons/detail/godsons-detail";
 import { UserProvider } from '../providers/user/user';
+import { NewProvider } from '../providers/new/new';
 import { GodsonProvider } from '../providers/godson/godson';
 import {File} from "@ionic-native/file";
 import {Camera} from "@ionic-native/camera";
@@ -101,6 +102,7 @@ import {NewsPage} from "../pages/news/news";
     UserProvider,
     GodsonProvider,
     GodfatherProvider,
+    NewProvider,
     Singleton,
     ThreadProvider
   ]

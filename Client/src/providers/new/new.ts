@@ -4,7 +4,7 @@ import {NativeStorage} from "@ionic-native/native-storage";
 import {Singleton} from "../singleton/singleton";
 
 @Injectable()
-export class UserProvider {
+export class NewProvider {
 
   REGISTER_NEW = "news/store";
 

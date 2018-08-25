@@ -58,7 +58,6 @@ export class NewsPage {
         case "success":
         case "error":
         default:
-
       }
     });
 
