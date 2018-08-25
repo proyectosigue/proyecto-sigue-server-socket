@@ -9,6 +9,7 @@ import {
 } from 'ionic-angular';
 import {Camera, CameraOptions} from "@ionic-native/camera";
 import {FormBuilder, FormGroup} from "@angular/forms";
+import {NewProvider} from "../../providers/new/new";
 
 /**
  * Generated class for the NewsPage page.
@@ -32,7 +33,7 @@ export class NewsPage {
   form: FormGroup;
 
   constructor(public navParams: NavParams, private camera: Camera, public toastCtrl: ToastController,
-              private formBuilderCtrl: FormBuilder, public alertCtrl: AlertController,
+              private formBuilderCtrl: FormBuilder, private newProvider: NewProvider, public alertCtrl: AlertController,
               public navCtrl: NavController) {
     this.createForm();
   }
@@ -48,11 +49,20 @@ export class NewsPage {
   }
 
   registerNew() {
-    /*let self = this;
+    let self = this;
     let newData = {
       "title": this.title, "description": this.description, "new_image": this.new_image,
     };
-    this.userProvider.signUp(userData).subscribe((signUpRes: any) => {
+    this.newProvider.registerNew(newData).subscribe((newResp: any) => {
+      switch(newResp.status) {
+        case "success":
+        case "error":
+        default:
+
+      }
+    });
+
+    /*this.userProvider.signUp(userData).subscribe((signUpRes: any) => {
       switch (signUpRes.status) {
         case "success":
           if (this.imageURI !== "") {
@@ -67,7 +77,6 @@ export class NewsPage {
         case "error":
         default:
           this.presentResponse(signUpRes);
-          break;
       }
     });*/
   }
