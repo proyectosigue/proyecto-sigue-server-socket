@@ -68,7 +68,6 @@ export class RegisterPage {
         case "error":
         default:
           this.presentResponse(signUpRes);
-          break;
       }
     });
   }
