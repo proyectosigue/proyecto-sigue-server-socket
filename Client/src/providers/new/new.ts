@@ -6,12 +6,14 @@ import {Singleton} from "../singleton/singleton";
 @Injectable()
 export class NewProvider {
 
-  REGISTER_NEW = "news/store";
+  STORE_NEW: string;
 
-  constructor(public http: HttpClient, private nativeStorage: NativeStorage, private singletonService: Singleton) {}
+  constructor(public http: HttpClient, private nativeStorage: NativeStorage, private singletonService: Singleton) {
+    this.STORE_NEW = "news";
+  }
 
   registerNew(newData) {
-    return this.singletonService.post(this.REGISTER_NEW, newData, false);
+    return this.singletonService.post(this.STORE_NEW, newData);
   }
 
 }
