@@ -15,6 +15,7 @@ import { HomeAdminPage } from '../pages/home-admin/home-admin'
 import { HomeUserPage } from '../pages/home-godfather/home-godfather'
 import { AdminTabsPage } from '../pages/home-admin/tabs/admin-tabs';
 import { GodfathersPage} from "../pages/home-admin/godfathers/list/godfathers-list";
+import {AboutPopoverPage} from "../pages/home-admin/about/list/about-popover/about-popover";
 import { GodfathersPopoverPage } from "../pages/home-admin/godfathers/list/godfathers-popover/godfathers-popover";
 import { GodfathersDetailPage } from "../pages/home-admin/godfathers/detail/godfathers-detail";
 import { GodfathersDetailPopoverPage } from "../pages/home-admin/godfathers/detail/popover/godfathers-detail-popover";
@@ -47,6 +48,7 @@ import {NewsPage} from "../pages/news/news";
     HomeUserPage,
     GodfathersPage,
     GodfathersDetailPage,
+    AboutPopoverPage,
     GodfathersDetailPopoverPage,
     GodfathersPopoverPage,
     GodfatherTopicsListPage,
@@ -77,6 +79,7 @@ import {NewsPage} from "../pages/news/news";
     HomeUserPage,
     GodfathersPage,
     GodfathersDetailPage,
+    AboutPopoverPage,
     GodfathersDetailPopoverPage,
     GodfatherTopicsListPage,
     GodfatherTopicsListPopoverPage,

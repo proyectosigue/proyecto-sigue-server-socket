@@ -7,12 +7,42 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>NewsPage</ion-title>
+    <ion-title>Registrar noticia</ion-title>
   </ion-navbar>
 
 </ion-header>
 
-
 <ion-content padding>
+  <ion-list>
 
+    <ion-item>
+      <img src="../../assets/imgs/logoproyecto.png">
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Titulo</ion-label>
+      <ion-input type="text" name="title" [(ngModel)]="title"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Descripcion</ion-label>
+      <ion-textarea name="description" [(ngModel)]="description"></ion-textarea>
+    </ion-item>
+
+
+    <ion-grid margin-top>
+      <ion-row>
+        <ion-col col-2><ion-label>Adjuntar imagen</ion-label></ion-col>
+        <ion-col col-2><button ion-button color="secondary" (click)="getImage()" #fileInput>Seleccionar</button></ion-col>
+      </ion-row>
+      <ion-row *ngIf="imageURI" margin-top>
+        <img src="{{imageURI}}" alt="Ionic File" class="preview-sign-up-profile-image"/>
+      </ion-row>
+    </ion-grid>
+
+  </ion-list>
+
+  <div padding text-center="true">
+    <button ion-button (click)="registerNew()">Guarda noticia</button>
+  </div>
 </ion-content>

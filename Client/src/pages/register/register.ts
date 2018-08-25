@@ -94,8 +94,7 @@ export class RegisterPage {
       this.presentToast(err);
     });
   }
-
-
+  
   presentResponse(response) {
     let self = this;
     let messages = "";
