@@ -9,7 +9,7 @@ export class NewProvider {
   STORE_NEW: string;
 
   constructor(public http: HttpClient, private nativeStorage: NativeStorage, private singletonService: Singleton) {
-    this.STORE_NEW = "news";
+    this.STORE_NEW = "events";
   }
 
   registerNew(newData) {

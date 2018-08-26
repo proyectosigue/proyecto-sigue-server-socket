@@ -10,6 +10,7 @@ import {
 import {Camera, CameraOptions} from "@ionic-native/camera";
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {NewProvider} from "../../providers/new/new";
+import {NativeStorage} from "@ionic-native/native-storage";
 
 /**
  * Generated class for the NewsPage page.
@@ -34,7 +35,7 @@ export class NewsPage {
 
   constructor(public navParams: NavParams, private camera: Camera, public toastCtrl: ToastController,
               private formBuilderCtrl: FormBuilder, private newProvider: NewProvider, public alertCtrl: AlertController,
-              public navCtrl: NavController) {
+              public navCtrl: NavController, private nativeStorage: NativeStorage) {
     this.createForm();
   }
 
@@ -51,7 +52,9 @@ export class NewsPage {
   registerNew() {
     let self = this;
     let newData = {
-      "title": this.title, "description": this.description, "new_image": this.new_image,
+      "title": this.title,
+      "description": this.description,
+      "created_by": this.nativeStorage.getItem("session")["__zone_symbol__value"].user.id,
     };
     this.newProvider.registerNew(newData).subscribe((newResp: any) => {
       switch(newResp.status) {
