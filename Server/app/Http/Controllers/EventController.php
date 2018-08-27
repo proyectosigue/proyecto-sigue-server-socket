@@ -11,18 +11,27 @@ class EventController extends Controller
 {
     public function store(EventRequest $request){
       try {
-        $newInstance = Event::create([
+        $eventInstance = Event::create([
           "title" => $request->input('title'),
           "description" => $request->input('description'),
           "created_by" => $request->input('created_by'),
         ]);
+
+        if ($request->image['new_image']) {
+          $file_date_title = date('H_i_s').'_event_image.jpeg';
+          $full_file_address = "event-images/$file_date_title";
+          Storage::put($full_file_address, base64_decode($request->image['new_image']['value']));
+
+          $eventInstance->image = $full_file_address;
+          $eventInstance->save();
+        }
 
         return response()->json([
             'header' => 'Éxito',
             'status' => 'success',
             'messages' => ['Se ha registrado la noticia'],
             'data' => [
-                'id' => $newInstance->id
+                'id' => $eventInstance->id
             ]
         ]);
 
