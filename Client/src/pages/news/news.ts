@@ -55,32 +55,11 @@ export class NewsPage {
       "title": this.title,
       "description": this.description,
       "created_by": this.nativeStorage.getItem("session")["__zone_symbol__value"].user.id,
+      "image": (this.imageURI !== "") ?  self.form.value : null,
     };
     this.newProvider.registerNew(newData).subscribe((newResp: any) => {
-      switch(newResp.status) {
-        case "success":
-        case "error":
-        default:
-      }
+      this.presentResponse(newResp);
     });
-
-    /*this.userProvider.signUp(userData).subscribe((signUpRes: any) => {
-      switch (signUpRes.status) {
-        case "success":
-          if (this.imageURI !== "") {
-            self.godfatherProvider.uploadProfileImage(self.form.value, signUpRes.data.id).subscribe((profileImgRes: any) => {
-              this.presentResponse(signUpRes);
-            });
-          }
-          else {
-            this.presentResponse(signUpRes);
-          }
-          break;
-        case "error":
-        default:
-          this.presentResponse(signUpRes);
-      }
-    });*/
   }
 
   getImage() {
