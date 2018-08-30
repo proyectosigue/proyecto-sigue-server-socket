@@ -1,0 +1,28 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Noticias</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="presentPopover($event)">
+        <ion-icon name="more"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item-sliding *ngFor="let new of news">
+
+      <ion-item [navPush]="godfathersDetailPage" [navParams]="godfather">
+        <ion-avatar item-start>
+          <img src="{{ new.image }}" width="40" height="40">
+        </ion-avatar>
+        <h2>{{ new.title }}</h2>
+      </ion-item>
+      <ion-item-options side="right">
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>
