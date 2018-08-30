@@ -36,7 +36,7 @@ import { TruncateModule } from "ng2-truncate";
 import { LastPipe } from "../pipes/last/last";
 import { ThreadProvider } from '../providers/thread/thread';
 import {GodfatherTabsPage} from "../pages/home-godfather/tabs/godfather-tabs";
-import {NewsPage} from "../pages/news/news";
+import {NewsPage} from "../pages/news/register/news";
 
 @NgModule({
   declarations: [

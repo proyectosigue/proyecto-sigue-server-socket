@@ -9,7 +9,7 @@ import {
 } from 'ionic-angular';
 import {Camera, CameraOptions} from "@ionic-native/camera";
 import {FormBuilder, FormGroup} from "@angular/forms";
-import {NewProvider} from "../../providers/new/new";
+import {NewProvider} from "../../../providers/new/new";
 import {NativeStorage} from "@ionic-native/native-storage";
 
 /**

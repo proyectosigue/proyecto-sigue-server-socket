@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {IonicPage, NavController, NavParams} from 'ionic-angular';
-import { NewsPage } from "../../news/news";
+import { NewsPage } from "../../news/register/news";
 import { GodfatherTopicsListPage } from "../../home-admin/godfathers/topics/list/godfather-topics-list";
 import {Godfather} from "../../../models/godfather";
 

@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {IonicPage, NavController, ViewController, App} from 'ionic-angular';
-import {NewsPage} from "../../../../news/news";
+import {NewsPage} from "../../../../news/register/news";
 
 @IonicPage()
 @Component({
