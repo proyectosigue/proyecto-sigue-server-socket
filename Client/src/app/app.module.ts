@@ -14,8 +14,8 @@ import { RegisterPage } from "../pages/register/register";
 import { HomeAdminPage } from '../pages/home-admin/home-admin'
 import { HomeUserPage } from '../pages/home-godfather/home-godfather'
 import { AdminTabsPage } from '../pages/home-admin/tabs/admin-tabs';
-import { GodfathersPage} from "../pages/home-admin/godfathers/list/godfathers-list";
-import {AboutPopoverPage} from "../pages/home-admin/about/list/about-popover/about-popover";
+import { GodfathersPage } from "../pages/home-admin/godfathers/list/godfathers-list";
+import { AboutPopoverPage } from "../pages/home-admin/about/list/about-popover/about-popover";
 import { GodfathersPopoverPage } from "../pages/home-admin/godfathers/list/godfathers-popover/godfathers-popover";
 import { GodfathersDetailPage } from "../pages/home-admin/godfathers/detail/godfathers-detail";
 import { GodfathersDetailPopoverPage } from "../pages/home-admin/godfathers/detail/popover/godfathers-detail-popover";
@@ -28,15 +28,16 @@ import { GodsonsDetailPage } from "../pages/home-admin/godsons/detail/godsons-de
 import { UserProvider } from '../providers/user/user';
 import { NewProvider } from '../providers/new/new';
 import { GodsonProvider } from '../providers/godson/godson';
-import {File} from "@ionic-native/file";
-import {Camera} from "@ionic-native/camera";
+import { File } from "@ionic-native/file";
+import { Camera } from "@ionic-native/camera";
 import { GodfatherProvider } from '../providers/godfather/godfather';
 import { Singleton } from '../providers/singleton/singleton';
 import { TruncateModule } from "ng2-truncate";
 import { LastPipe } from "../pipes/last/last";
 import { ThreadProvider } from '../providers/thread/thread';
-import {GodfatherTabsPage} from "../pages/home-godfather/tabs/godfather-tabs";
-import {NewsPage} from "../pages/news/register/news";
+import { GodfatherTabsPage } from "../pages/home-godfather/tabs/godfather-tabs";
+import { NewsPage } from "../pages/news/register/news";
+import { NewsListPage } from "../pages/news/list/news-list";
 
 @NgModule({
   declarations: [
