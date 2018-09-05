@@ -22,9 +22,6 @@ export class NewsListPage {
   }
 
   fillNews(){
-    this.newsProvider.getGodfathers().subscribe((data: New[]) => {
-      this.news = data;
-    });
   }
 
   presentPopover(event) {
