@@ -9,6 +9,11 @@ use Illuminate\Support\Facades\Storage;
 
 class EventController extends Controller
 {
+    public function index()
+    {
+        return response()->json(Event::all());
+    }
+
     public function store(EventRequest $request){
       try {
         $eventInstance = Event::create([

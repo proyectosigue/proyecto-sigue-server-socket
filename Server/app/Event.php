@@ -17,4 +17,9 @@ class Event extends Model
     {
       return $this->belongsTo('App\User', 'created_by');
     }
+
+    public function getImageAttribute($value)
+    {
+        return asset("storage")."/$value";
+    }
 }
