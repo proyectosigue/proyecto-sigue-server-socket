@@ -18,7 +18,7 @@ export class NewProvider {
     this.GET_NEWS = "events";
   }
 
-  getGodfathers(){
+  getNews(){
     return this.singletonService.get(this.GET_NEWS, true);
   }
 
