@@ -19,7 +19,7 @@ export class NewProvider {
   }
 
   getNews(){
-    return this.singletonService.get(this.GET_NEWS, true);
+    return this.singletonService.get(this.GET_NEWS);
   }
 
 }
