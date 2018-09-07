@@ -46,6 +46,7 @@ export class Singleton {
   }
 
   get(url, auth = true) {
+    console.log(this.authHeaders);
     return this.http.get(this.API + url, (auth) ? this.authHeaders : this.guestHeaders);
   }
 

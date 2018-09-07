@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, PopoverController } from 'ionic-angular';
 import { AboutPopoverPage } from "./list/about-popover/about-popover";
 import { New } from "../../../../models/new";
+import { NewProvider } from "../../../providers/new/new";
 
 @Component({
   selector: 'page-about',
@@ -11,7 +12,7 @@ export class AboutPage {
 
   news: New[] = [];
 
-  constructor(public navCtrl: NavController, public popoverCtrl: PopoverController) {
+  constructor(public navCtrl: NavController, public popoverCtrl: PopoverController, public newsProvider: NewProvider) {
   }
 
   ionViewDidLoad() {
@@ -20,10 +21,10 @@ export class AboutPage {
   }
 
   fillNews(){
-    /*this.newsProvider.getNews().subscribe((data: New[]) => {
+    this.newsProvider.getNews().subscribe((data: New[]) => {
       this.news = data;
       console.log(data);
-    });*/
+    });
   }
 
   presentPopover(event) {
