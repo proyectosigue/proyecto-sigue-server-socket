@@ -23,7 +23,7 @@ export class AboutPage {
   fillNews(){
     this.newsProvider.getNews().subscribe((data: New[]) => {
       this.news = data;
-      console.log(data);
+      //console.log(data);
     });
   }
 
