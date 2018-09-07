@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, PopoverController } from 'ionic-angular';
-import {AboutPopoverPage} from "./list/about-popover/about-popover";
-import {NewsProvider} from "../../../../providers/new/new";
-import {New} from "../../../../models/new";
+import { AboutPopoverPage } from "./list/about-popover/about-popover";
+import { New } from "../../../../models/new";
 
 @Component({
   selector: 'page-about',
@@ -21,9 +20,10 @@ export class AboutPage {
   }
 
   fillNews(){
-    this.newsProvider.getGodfathers().subscribe((data: New[]) => {
+    /*this.newsProvider.getNews().subscribe((data: New[]) => {
       this.news = data;
-    });
+      console.log(data);
+    });*/
   }
 
   presentPopover(event) {
