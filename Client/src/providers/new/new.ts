@@ -15,7 +15,7 @@ export class NewProvider {
 
   constructor(public http: HttpClient, private singletonService: Singleton) {
     console.log('Hello NewProvider Provider');
-    this.GET_GODFATHERS = "events";
+    this.GET_NEWS = "events";
   }
 
   getGodfathers(){
