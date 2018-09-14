@@ -23,19 +23,9 @@ redis.psubscribe('*', function(err, count) { });
 redis.on('pmessage', function(subscribed, channel, message) {
     console.log('Channel is ' + channel);
 
-   /* let object = JSON.parse(message);
-    let info = object.data;
-    let event = object.event;
-    console.log(event);
-    switch(event){
-        case 'App\\Events\\NewThreadMessage':
-            io.emit(channel, { 'event': 'App\\Events\\NewThreadMessage', 'data': info.message});
-        break;
-        case 'App\\Events\\ThreadHistoryRequested':
-            io.emit(channel, { 'event': 'App\Events\ThreadHistoryRequested', 'data': info.messages});
-    }*/
+    //case 'App\\Events\\NewThreadMessage'
+    //case 'App\\Events\\ThreadHistoryRequested'
 
    // Emit con toda la data incluida del Event para poder diferenciar si queremos recibir uno o varios mensajes
-
-    io.emit(channel, JSON.parse(message).data.message);
+    io.emit(channel, JSON.parse(message));
 });
