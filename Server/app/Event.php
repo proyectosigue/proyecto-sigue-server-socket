@@ -20,6 +20,6 @@ class Event extends Model
 
     public function getImageAttribute($value)
     {
-        return asset("storage")."/$value";
+        return ($value) ? asset("storage")."/$value" : null;
     }
 }
