@@ -22,6 +22,7 @@ import { GodfathersDetailPopoverPage } from "../pages/home-admin/godfathers/deta
 import { GodfatherTopicsListPage } from "../pages/home-admin/godfathers/topics/list/godfather-topics-list";
 import { GodfatherTopicsListPopoverPage } from "../pages/home-admin/godfathers/topics/list/popover/godfather-topics-list-popover";
 import { GodfatherTopicDetailPage } from "../pages/home-admin/godfathers/topics/detail/godfather-topic-detail";
+import { NewsListPopoverPage } from "../pages/news/list/news-list-popover/news-list-popover";
 import { GodsonsPage } from "../pages/home-admin/godsons/list/godsons-list";
 import { GodsonsPopoverPage } from "../pages/home-admin/godsons/list/popover/godsons-popover";
 import { GodsonsDetailPage } from "../pages/home-admin/godsons/detail/godsons-detail";
@@ -58,6 +59,7 @@ import { NewProvider } from '../providers/new/new';
     GodfatherTopicDetailPage,
     GodsonsPage,
     GodsonsPopoverPage,
+    NewsListPopoverPage,
     GodsonsDetailPage,
     GodfatherTabsPage,
     NewsPage,
@@ -88,6 +90,7 @@ import { NewProvider } from '../providers/new/new';
     GodfatherTopicsListPopoverPage,
     GodfatherTopicDetailPage,
     GodfathersPopoverPage,
+    NewsListPopoverPage,
     GodsonsPage,
     GodsonsPopoverPage,
     GodsonsDetailPage,

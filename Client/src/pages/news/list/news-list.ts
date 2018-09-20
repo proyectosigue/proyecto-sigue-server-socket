@@ -1,7 +1,8 @@
-import {Component} from '@angular/core';
-import {IonicPage, NavController, NavParams, PopoverController} from 'ionic-angular';
-import {NewProvider} from "../../../providers/new/new";
-import {New} from "../../../models/new";
+import { Component } from '@angular/core';
+import { IonicPage, NavController, NavParams, PopoverController } from 'ionic-angular';
+import { NewsListPopoverPage } from "./news-list-popover/news-list-popover";
+import { NewProvider } from "../../../providers/new/new";
+import { New } from "../../../models/new";
 
 @IonicPage()
 @Component({
@@ -28,10 +29,10 @@ export class NewsListPage {
   }
 
   presentPopover(event) {
-    /*let popover = this.popoverCtrl.create(GodfathersPopoverPage);
+    let popover = this.popoverCtrl.create(NewsListPopoverPage);
     popover.present({
       ev: event
-    });*/
+    });
   }
 
 }
