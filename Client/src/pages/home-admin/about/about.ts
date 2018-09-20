@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, PopoverController } from 'ionic-angular';
 import { AboutPopoverPage } from "./list/about-popover/about-popover";
-import { New } from "../../../models/neww";
+import { New } from "../../../models/new";
 import { NewProvider } from "../../../providers/new/new";
 
 @Component({
@@ -23,7 +23,6 @@ export class AboutPage {
   fillNews(){
     this.newsProvider.getNews().subscribe((data: New[]) => {
       this.news = data;
-      console.log(this.newws);
     });
   }
 

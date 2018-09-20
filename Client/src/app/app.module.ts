@@ -61,6 +61,7 @@ import { NewProvider } from '../providers/new/new';
     GodsonsDetailPage,
     GodfatherTabsPage,
     NewsPage,
+    NewsListPage,
     LastPipe,
   ],
   imports: [
@@ -92,6 +93,7 @@ import { NewProvider } from '../providers/new/new';
     GodsonsDetailPage,
     GodfatherTabsPage,
     NewsPage,
+    NewsListPage,
   ],
   providers: [
     StatusBar,

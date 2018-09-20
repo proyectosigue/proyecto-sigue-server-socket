@@ -12,10 +12,16 @@ import { Singleton } from "../singleton/singleton";
 export class NewProvider {
 
   GET_NEWS: string;
+  POST_NEWS: string;
 
   constructor(public http: HttpClient, private singletonService: Singleton) {
     console.log('Hello NewProvider Provider');
     this.GET_NEWS = "events";
+    this.POST_NEWS = "events";
+  }
+
+  registerNew(eventData){
+    return this.singletonService.post(this.POST_NEWS, eventData, false);
   }
 
   getNews(){

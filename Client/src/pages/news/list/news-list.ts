@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {IonicPage, NavController, NavParams, PopoverController} from 'ionic-angular';
-import {NewsProvider} from "../../../../providers/new/new";
-import {New} from "../../../../models/new";
+import {NewProvider} from "../../../providers/new/new";
+import {New} from "../../../models/new";
 
 @IonicPage()
 @Component({
@@ -13,7 +13,7 @@ export class NewsListPage {
   news: New[] = [];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public popoverCtrl: PopoverController,
-              private godfatherProvider: GodfatherProvider) {
+              private newsProvider: NewProvider) {
   }
 
   ionViewDidLoad() {
@@ -22,6 +22,9 @@ export class NewsListPage {
   }
 
   fillNews(){
+    this.newsProvider.getNews().subscribe((data: New[]) => {
+      this.news = data;
+    });
   }
 
   presentPopover(event) {

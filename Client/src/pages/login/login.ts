@@ -22,7 +22,7 @@ export class LoginPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
-    this.adminDebugSignIn();
+    //this.adminDebugSignIn();
   }
 
   signIn() {

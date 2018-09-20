@@ -15,14 +15,20 @@
   <ion-list>
     <ion-item-sliding *ngFor="let new of news">
 
-      <ion-item [navPush]="godfathersDetailPage" [navParams]="godfather">
-        <ion-avatar item-start>
-          <img src="{{ new.image }}" width="40" height="40">
-        </ion-avatar>
-        <h2>{{ new.title }}</h2>
+      <ion-item>
+        <ion-card>
+          <ion-item>
+            <h2>{{new.title}}lalalala</h2>
+            <p>{{new.created_at}}</p>
+          </ion-item>
+
+          <img src="{{new.image}}">
+
+          <ion-card-content>
+            <p>{{new.description}}</p>
+          </ion-card-content>
+        </ion-card>
       </ion-item>
-      <ion-item-options side="right">
-      </ion-item-options>
     </ion-item-sliding>
   </ion-list>
 </ion-content>
