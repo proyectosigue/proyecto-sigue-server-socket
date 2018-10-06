@@ -6,7 +6,7 @@ let redis = new Redis();
 
 var port = process.env.PORT || 3001;
 
-http.listen(port, function(){
+http.listen(port, '0.0.0.0', function(){
     console.log('listening in http://localhost:' + port);
 });
 
@@ -22,9 +22,6 @@ redis.psubscribe('*', function(err, count) { });
 
 redis.on('pmessage', function(subscribed, channel, message) {
     console.log('Channel is ' + channel);
-
-    //case 'App\\Events\\NewThreadMessage'
-    //case 'App\\Events\\ThreadHistoryRequested'
 
    // Emit con toda la data incluida del Event para poder diferenciar si queremos recibir uno o varios mensajes
     io.emit(channel, JSON.parse(message));
