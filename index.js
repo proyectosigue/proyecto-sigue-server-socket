@@ -22,6 +22,7 @@ redis.psubscribe('*', function(err, count) { });
 
 redis.on('pmessage', function(subscribed, channel, message) {
     console.log('Channel is ' + channel);
+    console.log(message);
 
    // Emit con toda la data incluida del Event para poder diferenciar si queremos recibir uno o varios mensajes
     io.emit(channel, JSON.parse(message));
