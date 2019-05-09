@@ -2,10 +2,11 @@ let app = require('express')();
 let http = require('http').Server(app);
 let io = require('socket.io')(http);
 let Redis = require('ioredis');
-let redis = new Redis(process.env.REDIS_URL);
+const environment = require('./environment');
+let redis = new Redis(environment.REDIS_URL);
 
-http.listen(process.env.PORT || 5000, '0.0.0.0', function(){
-    console.log('listening in at port ' + process.env.PORT);
+http.listen(environment.NODE_PORT || 5000, '0.0.0.0', function () {
+    console.log('listening in at port ' + (environment.NODE_PORT || 5000));
 });
 
 function handler(req, res) {
@@ -16,11 +17,13 @@ function handler(req, res) {
 
 io.on('connection', (socket) => {
     console.log(socket);
+})
+;
+
+redis.psubscribe('*', function (err, count) {
 });
 
-redis.psubscribe('*', function(err, count) { });
-
-redis.on('pmessage', function(subscribed, channel, message) {
+redis.on('pmessage', function (subscribed, channel, message) {
     console.log('Channel is ' + channel);
     console.log(message);
 
